@@ -1,5 +1,77 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_tags %}
+{% block js %}
+<script type="text/javascript">
+    $(document).ready(function() {
+      var username_input = $('#id_username')
+      console.log($('label[for="' + $(username_input).attr('id') + '"]'))
+      $('label[for="' + $(username_input).attr('id') + '"]').text("Username or email");
+    });
+    
+    
+</script>
+{% endblock %}
+{% block page.title %}Issue Tracker{% endblock %}
 {% block content %}
-<h1>Index page</h1>
+{% if message %}
+<section class="row">
+    <span class="message">{{ message }}</span>
+</section>
+{% endif %}
+<main class="container content">
+    <section class="row home-primary-content">
+        {% if user.is_authenticated %}
+        <section class="col">
+            <h1>Issue Tracker</h1>
+            <h2>Report issues and propose new features</h2>
+            <hr>
+            <p>Welcome <span class="username">{{ user.username }}</span>! Head on over to the issues page to start reporting any issues you've come across or to contribute your suggestions to improve our app!</p>
+            <div class="issues-button"><a href="#">View issues</a></div>
+        </section>
+        {% else %}
+        <section class="col-sm-12 col-lg-7">
+            <h1>Issue Tracker</h1>
+            <h2>Report issues and propose new features</h2>
+            <hr>
+            <p>A place where you can report the bugs you've come across and suggest new features you'd like to see implemented in our Unicorn Attractor app.</p>
+            <p>Check out all issues being tracked or <a href="{% url 'register' %}" class="register-link">register an account</a> to add new issues.</p>
+            <div class="issues-button"><a href="#">View issues</a></div>
+        </section>
+        <section class="col-sm-12 col-lg-5">
+            <form id="login-form" method="POST" action="{% url 'login' %}">
+                <p class="login-form-heading">Log in</p>
+                {% csrf_token %}
+                    
+                {{ login_form|as_bootstrap }}
+                <button type="submit">Login</button>
+                <section class="link">
+                    <p>Don't have an account yet?</p>
+                    <a href="{% url 'register' %}" class="register-link">Register now!</a>
+                </section>
+            </form>
+        </section>
+        {% endif %}
+    </section>
+    <hr>
+    <section class="row home-secondary-content">
+        <section class="col-sm-12 col-lg-6">
+            <h3>How it works</h1>
+            <p>Issues come in two varieties - bugs and features.
+                <br><br>
+                You can create new issue tickets for bugs you've come across or if there already exists an issue for that specific bug, you can upvote that issue to signify that you've come across it too.
+                <br><br>
+                If you've thought of a feature that you'd like implemented in our application, create a new feature request issue describing it. You can also upvote other user's feature requests to signify that you too would like to see them implemented. 
+                <br><br>
+                Our development time is spent on the bugs and features with the highest priority(the highest number of upvotes).  Each user can upvote a specific bug ticket only once and a feature request an unlimited amout of times.
+                <br><br>
+                We promise to spend 50% of our time developing new features. In order to do that, each time a feature request is upvoted, it costs money.
+                <br><br>
+                We offer full transparency of our work in real-time.
+            </p>
+        </section>
+        <section class="col-sm-12 col-lg-6 icon">
+            <i class="fas fa-question"></i>
+        </section>
+    </section>
+</main>
 {% endblock %}

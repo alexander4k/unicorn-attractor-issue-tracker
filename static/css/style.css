@@ -5,6 +5,28 @@ body {
     color: #222222;
 }
 
+h2 {
+    font-size: 1.5rem;
+}
+
+/*============================ MESSAGES ============================*/
+.alert.alert-danger {
+    color: #ff6979;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+}
+
+.error-msg {
+    font-size: 0.75rem;
+    color: #ff6979;
+}
+
+.help-block {
+    font-size: 0.75rem;
+}
+
+/*============================ NAVIGATION ============================*/
 .navbar {
     height: 60px;
     background-color: #6155d6 !important;
@@ -12,27 +34,45 @@ body {
     padding: 0;
 }
 
+
 .navbar-nav {
     background-color: white;
     border-bottom: 1px solid #bfbfbf;
+    height: 100%
 }
 
 .navbar-nav .nav-item {
     padding-left: 10px;
     padding-right: 10px;
+    
+}
+
+.navbar-nav .nav-item a{
+    transition: color .3s;
+    
+}
+
+.navbar-nav .nav-item:hover a{
+    color: #3ecf8e;
+    
 }
 
 .navbar-nav .nav-item .nav-link {
     color: #6155d6;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .navbar .container {
     padding: 0;
     height:100%;
+    z-index: 1;
 }
 
 .navbar a {
     color: white;
+    transition: color .2s;
 }
 
 .navbar-brand {
@@ -43,6 +83,11 @@ body {
 
 .navbar-brand img {
     height: 100%;
+    transition: opacity .2s;
+}
+
+.navbar-brand img:hover {
+    opacity: .8;
 }
 
 .navbar-toggler {
@@ -54,14 +99,230 @@ body {
     font-size: 1.5em;
 }
 
+/*============================ Homepage ============================*/
 main {
     margin-top: 20px;
 }
 
-@media only screen and (min-width: 992px) {
-    .navbar-nav {
+.content {
+    margin-top: 40px;
+    z-index: 2;
+}
+
+.message {
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    background-color: #aff1b6;
+    position: absolute;
+}
+
+.username {
+    font-weight: 700;
+    font-size: 20px;
+    color: #3ecf8e;
+}
+
+.register-link {
+    color: #3ecf8e;
+}
+
+.register-link:hover {
+    color: #3ecf8e;
+}
+
+.issues-button {
+    width: 200px;
+    height: 60px;
+    border: 1px solid #dddddd;
+    font-size: 1.375rem;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    transition: background-color .2s;
+    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+}
+
+.issues-button:hover {
+    cursor: pointer;
     background-color: #6155d6;
-    border-bottom: none;
+    color: white;
+}
+
+.issues-button a {
+    color: #6155d6;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.issues-button:hover a {
+    color: white;
+}
+
+.home-primary-content {
+    padding-bottom: 40px;
+}
+
+.home-secondary-content {
+    margin-top: 40px;
+}
+
+.home-secondary-content h3 {
+    color: #6155d6;
+}
+
+.home-secondary-content .icon {
+    display: none;
+}
+.home-secondary-content i {
+    font-size: 10em;
+    color: #3ecf8e;
+}
+
+/*--------------------------- LOGIN FORM ---------------------------*/
+
+#login-form {
+    background-color: white;
+    padding: 10px;
+    margin-top:40px;
+    -webkit-box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
+}
+
+#login-form .login-form-heading {
+    width: 100%;
+    text-align: center;
+    color: #6155d6;
+    font-size: 1.5rem;
+} 
+
+#login-form label {
+    color: #444444;
+}
+
+#login-form input:focus {
+    border-color: #3ecf8e;
+    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25);
+}
+
+#login-form button {
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    background-color: #3ecf8e; 
+    border: none;
+    transition: background-color .2s;
+    border-radius: 3px;
+}
+
+#login-form button:hover {
+    background-color: #35b077; 
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link p {
+    padding-top: 1rem;
+    margin: 0;
+}
+
+
+/*========================== REGISTER PAGE - FORM ==========================*/
+.register .register-content {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
+}
+
+.register h1 {
+    color: #6155d6;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.register .login-link {
+    padding-top: 1rem;
+    text-align: center;
+    margin:0;
+}
+
+.register .login-link a {
+    color: #6155d6;
+}
+
+#register-form input:focus {
+    border-color: #3ecf8e;
+}
+
+#register-form button {
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    background-color: #3ecf8e; 
+    border: none;
+    transition: background-color .2s;
+    border-radius: 3px;
+}
+
+#register-form button:hover {
+    background-color: #35b077; 
+}
+
+/*========================== REGISTER ERROR PAGE ==========================*/
+.register-error {
+    margin-top:50px;
+    width:100%;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+
+/*========================== FOOTER ==========================*/
+footer {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #dddddd;
+    margin-top: 70px;
+}
+
+footer p {
+    margin: 0;
+}
+/*========================== MEDIA QUERIES ==========================*/
+@media only screen and (min-width: 576px) {
+    #login-form {
+        padding: 20px;
+    }
+    
+    .register .register-content {
+        padding: 20px;
+    }
+    
+}
+
+@media only screen and (min-width: 992px) {
+    #navbarSupportedContent {
+        height: 100%
+    }
+    
+    .navbar-nav {
+        background-color: #6155d6;
+        border-bottom: none;
     }
     
     .navbar-nav .nav-item {
@@ -76,4 +337,19 @@ main {
     .navbar-brand {
         padding-left: 0;
     }
+    
+    .content {
+        margin-top: 70px;
+    }
+    
+    #login-form {
+        margin-top: 0;
+    }
+    
+    .home-secondary-content .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
 }

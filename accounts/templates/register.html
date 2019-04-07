@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block page.title %}Registration Page{% endblock %}
+
+{% block content %}
+<main class="container content">
+    <section class="row register justify-content-center">
+        <section class="col-lg-5">
+            <section class="register-content">
+                <h1>Create your account</h1>
+                <form method="POST" id="register-form">
+                    {% csrf_token %}
+                    {{ registration_form|as_bootstrap }}
+                    <button type="submit">Register</button>
+                </form>
+                <p class="login-link">If you already have an account you can <a href="{% url 'index' %}">sign in</a></p>
+            </section>
+        </section>
+    </section>
+</main>
+{% endblock %}
