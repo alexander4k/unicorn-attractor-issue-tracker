@@ -9,6 +9,10 @@ h2 {
     font-size: 1.5rem;
 }
 
+h3 {
+    color: #6155d6;
+}
+
 /*============================ MESSAGES ============================*/
 .alert.alert-danger {
     color: #ff6979;
@@ -24,6 +28,17 @@ h2 {
 
 .help-block {
     font-size: 0.75rem;
+}
+
+/*============================ STATUS CODE PAGES ============================*/
+.error {
+    text-align: center;
+}
+
+.error-code {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 70px;
 }
 
 /*============================ NAVIGATION ============================*/
@@ -135,7 +150,7 @@ main {
 .issues-button {
     width: 200px;
     height: 60px;
-    border: 1px solid #dddddd;
+    border: 1px solid #eeeeee;
     font-size: 1.375rem;
     display: flex;
     justify-content: center;
@@ -170,10 +185,6 @@ main {
     margin-top: 40px;
 }
 
-.home-secondary-content h3 {
-    color: #6155d6;
-}
-
 .home-secondary-content .icon {
     display: none;
 }
@@ -188,9 +199,9 @@ main {
     background-color: white;
     padding: 10px;
     margin-top:40px;
-    -webkit-box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
+    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
 }
 
 #login-form .login-form-heading {
@@ -210,18 +221,22 @@ main {
 }
 
 #login-form button {
-    height: 40px;
+    padding: 10px;
     width: 100%;
     font-size: 20px;
     color: white;
     background-color: #3ecf8e; 
     border: none;
-    transition: background-color .2s;
+    transition: background-color .3s, color .3s;
     border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
 }
 
 #login-form button:hover {
-    background-color: #35b077; 
+    background-color: white; 
+    color: #3ecf8e;
 }
 
 .link {
@@ -238,11 +253,11 @@ main {
 
 /*========================== REGISTER PAGE - FORM ==========================*/
 .register .register-content {
-    border: 1px solid #dddddd;
+    border: 1px solid #eeeeee;
     padding: 10px;
-    -webkit-box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 13px -6px rgba(97,85,214,1);
+    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
 }
 
 .register h1 {
@@ -259,7 +274,7 @@ main {
 }
 
 .register .login-link a {
-    color: #6155d6;
+    color: #3ecf8e;
 }
 
 #register-form input:focus {
@@ -267,18 +282,22 @@ main {
 }
 
 #register-form button {
-    height: 40px;
+    padding: 10px;
     width: 100%;
     font-size: 20px;
     color: white;
     background-color: #3ecf8e; 
     border: none;
-    transition: background-color .2s;
+    transition: background-color .3s, color .3s;
     border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
 }
 
 #register-form button:hover {
-    background-color: #35b077; 
+    background-color: white; 
+    color: #3ecf8e;
 }
 
 /*========================== REGISTER ERROR PAGE ==========================*/
@@ -289,6 +308,157 @@ main {
     font-size: 1.25rem;
 }
 
+/*========================== REGISTER ERROR PAGE ==========================*/
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-username {
+    border: 1px solid #eeeeee;
+    padding: 10px;
+    color: #6155d6;
+    margin-top: 40px;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);  
+}
+
+.other-info {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #eeeeee;
+    flex-grow: 1;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);  
+}
+
+.upvotes-info {
+    border: 1px solid #eeeeee;
+    margin-top: 5px;
+    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+}    
+
+.other-info span {
+    color: #45b2e8;
+    font-weight: 700;
+}
+
+.upvotes-info a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color .3s;
+}
+
+.upvotes-info a .purchase-button {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .3s;
+    background-color: #45b2e8;
+}
+
+.upvotes-info a:hover {
+    color: #45b2e8;
+}
+
+.upvotes-info a .purchase-button:hover {
+    background-color: white;
+}
+
+.profile-image {
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    display: flex;
+    padding-bottom: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.change-image-button {
+    border: 1px solid #eeeeee;
+    margin-top: 5px;
+    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+}  
+
+.change-image-button a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color .3s;
+}
+
+.change-image-button a .change-button {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#3ecf8e;
+    transition: background-color .3s;
+}
+
+.change-image-button a:hover {
+    color: #3ecf8e;
+}
+
+.change-image-button a .change-button:hover {
+    background-color: white;
+}
+
+.update-image h3 {
+    padding: 10px;
+    border: 1px solid #eeeeee;
+    text-align: center;
+    margin: 0;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);    
+}
+
+.form-inputs {
+    padding: 10px;
+    border: 1px solid #eeeeee;
+    margin-top: 5px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);  
+}
+
+.form-inputs input[type="file"] {
+    width: 100%;
+}
+
+.update-button {
+    background-color: #3ecf8e;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 5px;
+    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    transition: background-color .3s, color .3s;
+}
+
+.update-button:hover {
+    color: #3ecf8e;
+    background-color: white;
+}
 
 /*========================== FOOTER ==========================*/
 footer {
@@ -296,7 +466,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #eeeeee;
     margin-top: 70px;
 }
 
@@ -305,17 +475,6 @@ footer p {
 }
 /*========================== MEDIA QUERIES ==========================*/
 @media only screen and (min-width: 576px) {
-    #login-form {
-        padding: 20px;
-    }
-    
-    .register .register-content {
-        padding: 20px;
-    }
-    
-}
-
-@media only screen and (min-width: 992px) {
     #navbarSupportedContent {
         height: 100%
     }
@@ -325,19 +484,71 @@ footer p {
         border-bottom: none;
     }
     
-    .navbar-nav .nav-item {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    
     .navbar-nav .nav-item .nav-link {
         color: white;
     }
     
-    .navbar-brand {
-        padding-left: 0;
+    #login-form {
+        padding: 20px;
     }
     
+    .register .register-content {
+        padding: 20px;
+    }
+    
+    .profile-username {
+        padding: 20px;
+        text-align: left;
+    }
+    
+    .other-info {
+        padding: 20px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .profile-info {
+        padding-right: 0;
+    }
+    
+    .profile-image {
+        padding-left: 5px;
+    }
+    
+    .profile-username {
+        margin-top: 0;
+    }
+    
+    .update-image form {
+        padding: 20px;
+        border: 1px solid #eeeeee;
+        margin-top: 5px;
+        -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+        -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+        box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);  
+    }
+    
+    .update-image .col-md-7 {
+        padding-right: 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .form-inputs {
+        border: none;
+        padding: 0;
+    }
+    
+    .update-image .col-md-5 {
+        padding-left: 5px;
+    }
+    
+    .update-button {
+        margin-top: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
     .content {
         margin-top: 70px;
     }
@@ -351,5 +562,4 @@ footer p {
         justify-content: center;
         align-items: center;
     }
-    
 }

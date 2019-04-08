@@ -14,7 +14,7 @@ def index(request):
         del request.session['message']
 
     return render(request, 'index.html', {"login_form": login_form, "message":message})
-    
+
 def login(request):
     # View for login a user in
     if request.user.is_authenticated:
@@ -32,16 +32,12 @@ def login(request):
                 else:
                     login_form.add_error(None, "Username or password is incorrect")
                     return render(request, 'index.html', {"login_form": login_form})
-            
+        else:
+            response = render(request, '400.html')
+            response.status_code = 400
+            return response
     return redirect("index")
-    
-@login_required
-def logout(request):
-    # View for login a user out
-    auth.logout(request)
-    request.session['message'] = "You have successfully logged out"
-    return redirect("index")
-    
+
 def register(request):
     # View for registering a user account
     if request.user.is_authenticated:
@@ -67,5 +63,11 @@ def register(request):
 def register_error(request):
     # Page to display in case a user cannot register an account
     return render(request, "register_error.html")
-
+    
+@login_required
+def logout(request):
+    # View for login a user out
+    auth.logout(request)
+    request.session['message'] = "You have successfully logged out"
+    return redirect("index")
     

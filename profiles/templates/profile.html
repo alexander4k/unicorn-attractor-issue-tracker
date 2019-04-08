@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block page.title %}Profile Page{% endblock %} {% block content %}
+<main class="container content">
+      <section class="row profile">
+            <section class="col-md-6 order-md-2 profile-image">
+                  {% if profile.image %}
+                  <section class="image" style="background-image: url('{{ MEDIA_URL }}{{ profile.image }}')"></section>
+                  {% else %}
+                  <section class="image" style="background-image: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"></section>
+                  {% endif %}
+                  <section class="change-image-button">
+                        <a href="{% url 'update_profile_image' %}"><span class="change-button">Change profile image</span></a>
+                  </section>
+            </section>
+            <section class="col-md-6  order-md-1 profile-info">
+                  <section class="profile-username">
+                        <h1>{{ profile.user.username }}</h1>
+                  </section>
+                  <section class="other-info">
+                        {% if profile.user.email %}
+                              <p>Email: {{ profile.user.email }}</p>
+                        {% endif %}
+                        <p>Joined on: {{ profile.user.date_joined|date:"jS F Y P" }}</p>
+                        <p>Upvotes owned: <span>{{ profile.upvotes_owned }}</span></p>
+                  </section>
+                  <section class="upvotes-info">
+                        <a href="#"><span class="purchase-button">Purchase upvotes</span></a>
+                  </section>
+            </section>
+      </section>
+</main>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block page.title %}Profile Page{% endblock %} {% block content %}
+<main class="container content">
+      <section class="row">
+            <section class="col">
+                  <section class="update-image">
+                        <h3>Update image</h3>
+                        <form name="update_image_form" method="POST" enctype="multipart/form-data">
+                            <section class="row">
+                                <section class="col-md-7">
+                                    <section class="form-inputs">
+                                        {% csrf_token %}
+                                        {{ form }}
+                                    </section>
+                                </section>
+                                <section class="col-md-5">
+                                    <section>
+                                        <button class="update-button" type="submit">Update image</button>
+                                    </section>
+                                </section>
+                            </section>
+                         </form>
+                  </section>
+            </section>
+      </section>
+</main>
+{% endblock %}

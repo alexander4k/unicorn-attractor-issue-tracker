@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 class EmailAuth:
     """
     Authenticate a user by an exact match on the email and password
+    Allows the user to login with their email instead of username also.
     """
     
     def authenticate(self, username=None, password=None):

@@ -4,17 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
 class RegistrationForm(UserCreationForm):
+    email = forms.CharField(label="Email", required=True, widget=forms.EmailInput)
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Password Confirmation", widget=forms.PasswordInput)
-    
-    
-    def __init__(self, *args, **kwargs):
-        """ 
-        Credit to https://stackoverflow.com/questions/7682804/django-model-forms-setting-a-required-field 
-        for setting the email field as required
-        """
-        super(RegistrationForm, self).__init__(*args, **kwargs)
-        self.fields['email'].required = True
     
     class Meta:
         model = User
@@ -40,5 +32,6 @@ class RegistrationForm(UserCreationForm):
         return password2
         
 class LoginForm(forms.Form):
-    username = forms.CharField()
+    username = forms.CharField(label="Username or email")
     password = forms.CharField(widget=forms.PasswordInput)
+        

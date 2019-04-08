@@ -1,16 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
-{% block js %}
-<script type="text/javascript">
-    $(document).ready(function() {
-      var username_input = $('#id_username')
-      console.log($('label[for="' + $(username_input).attr('id') + '"]'))
-      $('label[for="' + $(username_input).attr('id') + '"]').text("Username or email");
-    });
-    
-    
-</script>
-{% endblock %}
+{% block js %}{% endblock %}
 {% block page.title %}Issue Tracker{% endblock %}
 {% block content %}
 {% if message %}
