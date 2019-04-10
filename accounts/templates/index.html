@@ -16,7 +16,7 @@
             <h2>Report issues and propose new features</h2>
             <hr>
             <p>Welcome <span class="username">{{ user.username }}</span>! Head on over to the issues page to start reporting any issues you've come across or to contribute your suggestions to improve our app!</p>
-            <div class="issues-button"><a href="#">View issues</a></div>
+            <div class="issues-button"><a href="{% url 'issues' %}">View issues</a></div>
         </section>
         {% else %}
         <section class="col-sm-12 col-lg-7">
@@ -25,7 +25,7 @@
             <hr>
             <p>A place where you can report the bugs you've come across and suggest new features you'd like to see implemented in our Unicorn Attractor app.</p>
             <p>Check out all issues being tracked or <a href="{% url 'register' %}" class="register-link">register an account</a> to add new issues.</p>
-            <div class="issues-button"><a href="#">View issues</a></div>
+            <div class="issues-button"><a href="{% url 'issues' %}">View issues</a></div>
         </section>
         <section class="col-sm-12 col-lg-5">
             <form id="login-form" method="POST" action="{% url 'login' %}">
@@ -44,7 +44,7 @@
     </section>
     <hr>
     <section class="row home-secondary-content">
-        <section class="col-sm-12 col-lg-6">
+        <article class="col-sm-12 col-lg-6">
             <h3>How it works</h1>
             <p>Issues come in two varieties - bugs and features.
                 <br><br>
@@ -58,7 +58,7 @@
                 <br><br>
                 We offer full transparency of our work in real-time.
             </p>
-        </section>
+        </article>
         <section class="col-sm-12 col-lg-6 icon">
             <i class="fas fa-question"></i>
         </section>

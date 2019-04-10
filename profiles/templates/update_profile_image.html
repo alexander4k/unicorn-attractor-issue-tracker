@@ -3,22 +3,20 @@
       <section class="row">
             <section class="col">
                   <section class="update-image">
-                        <h3>Update image</h3>
-                        <form name="update_image_form" method="POST" enctype="multipart/form-data">
-                            <section class="row">
-                                <section class="col-md-7">
-                                    <section class="form-inputs">
-                                        {% csrf_token %}
-                                        {{ form }}
-                                    </section>
-                                </section>
-                                <section class="col-md-5">
-                                    <section>
-                                        <button class="update-button" type="submit">Update image</button>
-                                    </section>
-                                </section>
+                        <h1>Update image</h3>
+                        {% if messages %}
+                            <section class="messages">
+                        {% for message in messages %}
+                                <p>{{ message }}</p>
+                        {% endfor %}
                             </section>
-                         </form>
+                        {% endif %}
+                        <hr>
+                        <form name="update-image-form" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form }}
+                            <button class="update-button" type="submit">Update image</button>
+                        </form>
                   </section>
             </section>
       </section>

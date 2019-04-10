@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block page.title %}Issues Page{% endblock %}
+
+{% block page.heading %}Issues{% endblock %}
+
+{% block content %}
+<main class="container content">
+    <section class="row issues">
+        <article class="col-sm-12 issue-details">
+            <h1 class="issue_title">{{ issue.title }}</h1>
+            {% if messages %}
+                <section class="messages">
+            {% for message in messages %}
+                    <p>{{ message }}</p>
+            {% endfor %}
+                </section>
+            {% endif %}
+            <section class="status-and-upvotes">
+                <section>
+                {% if issue.issue_type == 'BG' %}
+                    <i class="fas fa-bug" title="Bug"></i>
+                {% else %}
+                    <i class="far fa-lightbulb" title="Feature"></i>
+                {% endif %}
+                    <p class="status ic">{{ issue.status_long }}</p>
+                {% if user.is_authenticated and user == issue.author %}
+                    <i class="fas fa-trash-alt" title="Delete"></i>
+                {% endif %}
+                </section>
+                <section class="upvotes">
+                {% if upvoted or not user.profile %}
+                    <p class="upvotes-done"><i class="fas fa-level-up-alt" title="Upvote"></i> {{ issue.total_upvotes }}</p>
+                {% else %}
+                    <a href="{% url 'add_upvote' issue.id %}"><p><i class="fas fa-level-up-alt" title="Upvote"></i> {{ issue.total_upvotes }}</p></a>
+                {% endif %}
+                </section>
+            </section>
+            <section class="description">
+                <p>{{ issue.description }}</p>
+            </section>
+            <section class="date">
+                <p>Created {{ issue.created|date:"M j Y" }} by <strong>{{ issue.author.username }}</strong></p>
+            </section>
+        </article>
+        <article class="col-sm-12 comments">
+            {% if user.is_authenticated %}
+            <section class="comment-add-form">
+                <form method="POST" name="add_comment_form">
+                    {% csrf_token %}
+                        
+                    {{ comment_form|as_bootstrap }}
+                    <button type="submit">Submit comment</button>
+                </form>
+            </section>
+            {% endif %}
+            <section class="comments-list">
+                {% for comment in comments %}
+                <section class="comment">
+                    <section class="user-image">
+                    {% if comment.author.profile.image %}
+                        <section style="background-image: url('{{MEDIA_URL}}{{ comment.author.profile.image }}')"></section>
+                    {% else %}
+                        <section style="background-image: url('{{MEDIA_URL}}images/profile_images/default_profile_image.png')"></section>
+                    {% endif %}
+                    </section>
+                    <article class="comment-content">
+                        <section class="comment-header">
+                            <p>Posted by <strong>{{ comment.author }}</strong> - {{ comment.date_created|date:"jS F Y P" }}</p>
+                        </section>
+                        <hr>
+                        <section class="comment-body">
+                            <p>{{ comment.content }}</p>
+                        </section>
+                    </article>
+                    <hr>
+                </section>
+                {% endfor %}
+            </section>
+        </article>
+    </section>
+</main>
+{% endblock %}

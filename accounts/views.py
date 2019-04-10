@@ -41,7 +41,7 @@ def login(request):
 def register(request):
     # View for registering a user account
     if request.user.is_authenticated:
-        return redirect(reverse("index"))
+        return redirect("index")
         
     if request.method == "POST":
         registration_form = RegistrationForm(request.POST)
@@ -56,6 +56,8 @@ def register(request):
                 return redirect("index")
             else:
                 return redirect("register_error")
+        else:
+            messages.error(request, "Failed to create account, try again")
     else:         
         registration_form = RegistrationForm()
     return render(request, "register.html", {"registration_form": registration_form})

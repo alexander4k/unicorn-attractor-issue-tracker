@@ -30,6 +30,19 @@ h3 {
     font-size: 0.75rem;
 }
 
+.message {
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    background-color: #aff1b6;
+    position: absolute;
+}
+
+.messages {
+    color: #ff6979;
+}
+
 /*============================ STATUS CODE PAGES ============================*/
 .error {
     text-align: center;
@@ -79,6 +92,12 @@ h3 {
     align-items: center;
 }
 
+.navbar-nav .nav-item .nav-link i {
+    font-size: 1rem;
+    color: white;
+    margin-left: 10px;
+}
+
 .navbar .container {
     padding: 0;
     height:100%;
@@ -124,15 +143,6 @@ main {
     z-index: 2;
 }
 
-.message {
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    background-color: #aff1b6;
-    position: absolute;
-}
-
 .username {
     font-weight: 700;
     font-size: 20px;
@@ -156,9 +166,9 @@ main {
     justify-content: center;
     align-items:center;
     transition: background-color .2s;
-    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
 }
 
 .issues-button:hover {
@@ -199,9 +209,9 @@ main {
     background-color: white;
     padding: 10px;
     margin-top:40px;
-    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
 }
 
 #login-form .login-form-heading {
@@ -229,9 +239,9 @@ main {
     border: none;
     transition: background-color .3s, color .3s;
     border-radius: 3px;
-    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
 }
 
 #login-form button:hover {
@@ -255,9 +265,9 @@ main {
 .register .register-content {
     border: 1px solid #eeeeee;
     padding: 10px;
-    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
 }
 
 .register h1 {
@@ -290,9 +300,9 @@ main {
     border: none;
     transition: background-color .3s, color .3s;
     border-radius: 3px;
-    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
 }
 
 #register-form button:hover {
@@ -314,33 +324,26 @@ main {
     flex-direction: column;
 }
 
-.profile-username {
-    border: 1px solid #eeeeee;
+.profile-info article {
     padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    flex-grow: 1; 
+}
+
+.profile-info h1 {
+    font-size: 1.75rem;
     color: #6155d6;
-    margin-top: 40px;
-    text-align: center;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);  
+    text-align: center;  
 }
 
-.other-info {
-    padding: 10px;
-    margin-top: 5px;
+.purchase-upvotes-button {
     border: 1px solid #eeeeee;
-    flex-grow: 1;
+    margin-top: 5px;
     -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
     -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);  
-}
-
-.upvotes-info {
-    border: 1px solid #eeeeee;
-    margin-top: 5px;
-    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
 }    
 
 .other-info span {
@@ -348,14 +351,14 @@ main {
     font-weight: 700;
 }
 
-.upvotes-info a {
+.purchase-upvotes-button a {
     color: white;
     font-size: 20px;
     text-decoration: none;
     transition: color .3s;
 }
 
-.upvotes-info a .purchase-button {
+.purchase-upvotes-button a .purchase-button {
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -364,11 +367,11 @@ main {
     background-color: #45b2e8;
 }
 
-.upvotes-info a:hover {
+.purchase-upvotes-button a:hover {
     color: #45b2e8;
 }
 
-.upvotes-info a .purchase-button:hover {
+.purchase-upvotes-button a .purchase-button:hover {
     background-color: white;
 }
 
@@ -388,9 +391,9 @@ main {
 .change-image-button {
     border: 1px solid #eeeeee;
     margin-top: 5px;
-    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
 }  
 
 .change-image-button a {
@@ -417,26 +420,27 @@ main {
     background-color: white;
 }
 
-.update-image h3 {
+.update-image {
     padding: 10px;
-    border: 1px solid #eeeeee;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.update-image h1 {
+    font-size: 1.75rem;
+    color: #6155d6;
     text-align: center;
-    margin: 0;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);    
 }
 
-.form-inputs {
+.update-image > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-image > form > input#id_image {
     padding: 10px;
-    border: 1px solid #eeeeee;
-    margin-top: 5px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);  
-}
-
-.form-inputs input[type="file"] {
+    border: 1px solid #dddddd;
     width: 100%;
 }
 
@@ -448,10 +452,10 @@ main {
     width: 100%;
     font-size: 20px;
     padding: 10px;
-    margin-top: 5px;
-    -webkit-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 10px -6px rgba(97,85,214,1);
+    margin-top: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
     transition: background-color .3s, color .3s;
 }
 
@@ -459,6 +463,351 @@ main {
     color: #3ecf8e;
     background-color: white;
 }
+
+/*========================== ISSUES ==========================*/
+.buttons {
+    margin-bottom: 40px;
+}
+
+.issue {
+    margin-bottom: 10px;
+}
+
+.issue article {
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.issue i {
+    color: #666666;
+}
+
+.create-issue-button {
+    margin-top: 5px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}  
+
+.create-issue-button a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color .3s;
+}
+
+.create-issue-button a span {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#3ecf8e;
+    transition: background-color .3s;
+}
+
+.create-issue-button a:hover {
+    color: #3ecf8e;
+}
+
+.create-issue-button a span:hover {
+    background-color: white;
+}
+
+.issue-top-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.issue-top-info > section {
+    display: flex;
+    align-items: center;
+}
+
+.status {
+    padding: 3px 5px;
+    margin: 0;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: .75rem;
+}
+
+.ic {
+    background-color: #f5be58;
+}
+
+.ip {
+    background-color: #3ecf8e;
+}
+
+.ct {
+    background-color: #3297d3;
+}
+
+.issue-top-info > section > i:last-child {
+    margin-left: 10px;
+    color: #f6a4eb;
+}
+
+.upvotes-count {
+    margin: 0;
+    color: #3297d3;
+    padding: 0 5px;
+    border: 1px solid #dddddd;
+}
+
+.upvotes-count i {
+    color: #3297d3;
+    font-size: 1rem;
+}
+
+.issue-bottom-info {
+    margin-top: 10px;
+}
+
+.issue-bottom-info a {
+    color: #3297d3;
+    white-space: pre-wrap;    
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;   
+    white-space: -o-pre-wrap;   
+    word-wrap: break-word;
+}
+
+.dates {
+    margin-top: 10px;
+    font-size: .75rem;
+}
+
+.dates p {
+    margin: 0;
+}
+
+.dates p:first-of-type {
+    margin-bottom: 5px;
+}
+
+.dates p:last-of-type {
+    color: #666666;
+}
+
+/*========================== ISSUE DETAILS ==========================*/
+.issue-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.issue_title {
+    font-size: 2rem;
+}
+
+.status-and-upvotes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.status-and-upvotes section:first-child {
+    display:flex;
+}
+
+.status-and-upvotes i {
+    font-size: 1.5rem;
+    color: #666666;
+}
+
+.status-and-upvotes i.fa-trash-alt {
+    margin-left: 10px;
+    color: #f6a4eb;
+}
+
+.upvotes a {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    outline: 1px solid #dddddd;
+    padding: 0 5px;
+    color: #3297d3;
+    text-decoration: none;
+}
+
+.upvotes a i {
+    color: #3297d3;
+    font-size: 1rem;
+}
+
+.upvotes a:hover {
+    color: white;
+    background-color: #3297d3;
+    outline: none;
+}
+
+.upvotes a:hover i {
+    color: white;
+}
+
+.upvotes p {
+    margin: 0;
+    
+}
+
+.upvotes-done {
+    margin: 0;
+    color: white;
+    padding: 0 5px;
+    background-color: #3297d3;
+}
+
+.upvotes-done i {
+    color: white;
+    font-size: 1rem;
+}
+
+.description {
+    margin-top: 10px;
+}
+
+.description p {
+    margin: 0;
+}
+
+.date {
+    margin-top: 10px;
+    font-size: .75rem;
+}
+
+.date p {
+    margin: 0;
+}
+
+.comments {
+    margin-top: 40px;
+}
+
+.comments form {
+    display:flex;
+    flex-direction: column;
+}
+.comment-add-form textarea:focus {
+    border-color: #3ecf8e;
+    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25);
+}
+
+.comment-add-form button {
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    background-color: #3ecf8e; 
+    border: none;
+    transition: background-color .3s, color .3s;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.comment-add-form button:hover {
+    background-color: white; 
+    color: #3ecf8e;
+}
+
+.comments-list {
+    margin-top: 40px;
+}
+
+.comment {
+    display: flex;
+    margin-top: 20px;
+}
+
+.comment-content {
+    width: 100%;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+.user-image {
+    margin-right: 10px;
+}
+
+.user-image section {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.comment-header {
+    font-size: .75rem;
+}
+
+.comment-header p {
+    margin: 0;
+}
+
+.comment-body p {
+    white-space: pre-wrap;    
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;   
+    white-space: -o-pre-wrap;   
+    word-wrap: break-word;
+}
+
+/*========================== CREATE ISSUE ==========================*/
+.create-issue article {
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.create-issue h1 {
+    color: #6155d6;
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.create-issue form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-issue form input:focus,
+.create-issue form select:focus,
+.create-issue form textarea:focus {
+    border-color: #3ecf8e;
+    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25);
+}
+
+.create-issue button {
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    background-color: #3ecf8e; 
+    border: none;
+    transition: background-color .3s, color .3s;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.create-issue button:hover {
+    background-color: white; 
+    color: #3ecf8e;
+}
+
 
 /*========================== FOOTER ==========================*/
 footer {
@@ -496,12 +845,32 @@ footer p {
         padding: 20px;
     }
     
-    .profile-username {
+    .profile-info article {
         padding: 20px;
+    }
+    
+    .profile-info h1 {
         text-align: left;
     }
     
-    .other-info {
+    .update-image {
+        padding: 20px;
+    }
+    
+    .update-image h1 {
+        text-align: left;
+    }
+    
+    .dates {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .create-issue h1 {
+        text-align: left;
+    }
+    
+    .create-issue article {
         padding: 20px;
     }
 }
@@ -519,32 +888,48 @@ footer p {
         margin-top: 0;
     }
     
-    .update-image form {
-        padding: 20px;
-        border: 1px solid #eeeeee;
-        margin-top: 5px;
-        -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-        -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-        box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);  
+    .change-image-button {
+        max-width: 250px;
+        align-self: center;
     }
     
-    .update-image .col-md-7 {
-        padding-right: 0;
-        display: flex;
-        align-items: center;
-    }
-    
-    .form-inputs {
-        border: none;
-        padding: 0;
-    }
-    
-    .update-image .col-md-5 {
-        padding-left: 5px;
+    .purchase-upvotes-button {
+        max-width: 250px;
+        align-self: center;
     }
     
     .update-button {
+        max-width: 250px;
+        align-self: flex-end;
+    }
+    
+    .comment-add-form button {
+        max-width: 250px;
+        align-self: flex-end;
+    }
+    
+    .create-issue-button {
+        max-width: 250px;
+    }
+    
+    .update-image > form {
+        flex-direction: row;
+        
+    }
+    
+    .update-image > form input#id_image {
+        padding: 10px;
+    }
+    
+    .update-image > form button {
+        margin-left: 10px;
         margin-top: 0;
+        align-self: center;
+    }
+    
+    .create-issue button {
+        max-width: 250px;
+        align-self: flex-end;
     }
 }
 
@@ -561,5 +946,9 @@ footer p {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    
+    .issue article {
+        padding: 20px;
     }
 }

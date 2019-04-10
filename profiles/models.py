@@ -11,7 +11,7 @@ class Profile(models.Model):
     upvotes_owned = models.IntegerField(default=0)
     
     def __str__(self):
-        return self.user.username
+        return 'Profile of %s' % (self.user.username)
     
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
