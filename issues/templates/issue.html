@@ -1,0 +1,40 @@
+<section class="col-sm-12 issue">
+    <article>
+        <section class="issue-top-info">
+            <section>
+                {% if issue.issue_type == "BG" %}
+                    <i class="fas fa-bug" title="Bug"></i>
+                {% else %}
+                    <i class="far fa-lightbulb" title="Feature"></i>
+                {% endif %}
+                {% if issue.status == "IC" %}
+                <p class="status ic">{{ issue.status_long }}</p>
+                </a>
+                {% elif issue.status == "IP" %}
+                <p class="status ip">{{ issue.status_long }}</p>
+                </a>
+                {% else %}
+                <p class="status ct">{{ issue.status_long }}</p>
+                </a>
+                {% endif %} 
+            </section>
+            <p class="upvotes-count"><i class="fas fa-level-up-alt" title="Upvote"></i></i> {{ issue.total_upvotes }}</p>
+        </section>
+        <section class="issue-bottom-info">
+            <section class="title-comments">
+                <a href="{% url 'issue_details' issue.id %}" class="title">
+                    <p>{{ issue.title }}</p>
+                </a>
+                <p><i class="far fa-comments" title="Comments"></i> {{ issue.total_comments }}</p>
+            </section>
+            <section class="dates">
+                <p class="created-date">Created on {{ issue.created|date:"jS F Y" }} by <strong>{{ issue.author.username }}</strong></p>
+                {% if issue.completed %}
+                <p>Completed on {{ issue.completed|date:"jS F Y" }}</p>
+                {% elif issue.updated %}
+                <p>Updated on {{ issue.updated|date:"jS F Y P" }}</p>
+                {% endif %}
+            </section>
+        </section>
+    </article>
+</section>

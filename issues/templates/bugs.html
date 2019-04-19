@@ -1,0 +1,20 @@
+{% extends 'issues.html' %}
+{% block page.heading %}
+    <h1>Bugs</h1>
+    <hr>
+{% endblock %}
+{% block sort_links %}
+<div class="dropdown show">
+  <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <p>Sort by</p><i class="fas fa-sort-down"></i>
+  </a>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/issues/bugs/popular_sort/">Popular</a>
+    <a class="dropdown-item" href="/issues/bugs/comments_sort/">Comments</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block issue %}
+    {% include 'issue.html' %}
+{% endblock %}

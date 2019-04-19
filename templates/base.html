@@ -19,9 +19,9 @@
     <title>{% block page.title %}{% endblock %}</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm">
+    <nav class="navbar navbar-expand-md">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}"><img src="{{MEDIA_URL}}/images/brand/brand_image.png"></a>
+            <a class="navbar-brand" href="{% url 'index' %}"><img src="{{MEDIA_URL}}/images/brand/brand_image.png" alt="brand image"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <i class="fas fa-bars"></i>
             </button>
@@ -33,7 +33,13 @@
             <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'issues' %}">Issues</a>
+            <a class="nav-link" href="{% url 'issues' %}">All issues</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'bugs' %}">Bugs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'features' %}">Features</a>
           </li>
           {% if user.is_authenticated %}
             {% if user.profile %}

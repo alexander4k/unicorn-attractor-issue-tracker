@@ -1,50 +1,69 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_tags %}
 {% block page.title %}Issues Page{% endblock %}
-
-{% block page.heading %}Issues{% endblock %}
 
 {% block content %}
 <main class="container content">
     <section class="row issues">
+        <section class="col-sm-12 heading">
+            {% block page.heading %}
+            {% endblock %}
+        </section>
         <section class="col-sm-12 buttons">
             {% if user.is_authenticated and user.profile %}
                 <section class="create-issue-button">
                     <a href="{% url 'create_issue' %}"><span>Create issue</span></a>
                 </section>
             {% else %}
-                <p><a href="{% url 'register' %}" class="register-link"><span>Register to start creating issues</span></a></p>
+            <section class="register-or-login">
+                <p>
+                    <a href="{% url 'register' %}" class="login-register-link"><span>Register</span></a>
+                    or 
+                    <a href="{% url 'index' %}" class="login-register-link"><span>login</span></a>
+                    to start creating issues
+                </p>
+            </section>
+            {% endif %}
+            {% if issues %}
+                {% block sort_links %}
+                {% endblock %}
             {% endif %}
         </section>
-        {% for issue in issues %}
-        <section class="col-sm-12 issue">
-            <article>
-                <section class="issue-top-info">
-                    <section>
-                        {% if issue.issue_type == 'BG' %}
-                            <i class="fas fa-bug" title="Bug"></i>
-                        {% else %}
-                            <i class="far fa-lightbulb" title="Feature"></i>
-                        {% endif %}
-                        <p class="status ic">{{ issue.status_long }}</p>
-                        {% if user.is_authenticated and user == issue.author %}
-                            <i class="fas fa-trash-alt" title="Delete"></i>
-                        {% endif %}
-                    </section>
-                    <p class="upvotes-count"><i class="fas fa-level-up-alt" title="Upvote"></i></i> {{ issue.total_upvotes }}</p>
-                </section>
-                <section class="issue-bottom-info">
-                    <a href="{% url 'issue_details' issue.id %}" class="title"><p>{{ issue.title }}</p></a>
-                    <section class="dates">
-                        <p>Created on {{ issue.created|date:"M j Y" }} by <strong>{{ issue.author.username }}</strong></p>
-                        {% if issue.created %}
-                        <p>Updated on {{ issue.created|date:"M j Y" }}</p>
-                        {% endif %}
-                    </section>
-                </section>
-            </article>
-        </section>
-        {% endfor %}
+        {% if issues %}
+            {% for issue in issues %}
+                {% block issue %}
+                {% endblock %}
+            {% endfor %}
+        {% else %}
+            <section class="col-sm-12 no-issues-message">
+                <p>No issues have been added yet.</p>
+            </section>
+        {% endif %}
     </section>
+    {% if issues %}
+        <section class="row pagination-section">
+            <section class="col">
+                  <ul class="pagination">
+                    {% if issues.has_previous %}
+                      <li><a href="?page={{ issues.previous_page_number }}"><i class="fas fa-caret-left"></i></a></li>
+                    {% else %}
+                      <li class="disabled"><i class="fas fa-caret-left"></i></li>
+                    {% endif %}
+                    {% for i in issues.paginator.page_range %}
+                      {% if issues.number == i %}
+                        <li class="active">{{ i }}</li>
+                      {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    {% if issues.has_next %}
+                      <li><a href="?page={{ issues.next_page_number }}"><i class="fas fa-caret-right"></i></a></li>
+                    {% else %}
+                      <li class="disabled"><i class="fas fa-caret-right"></i></li>
+                    {% endif %}
+                  </ul>
+            </section>
+        </section>
+    {% endif %}
 </main>
 {% endblock %}

@@ -94,8 +94,14 @@ h3 {
 
 .navbar-nav .nav-item .nav-link i {
     font-size: 1rem;
-    color: white;
+    color: #6155d6;
     margin-left: 10px;
+    transition: color .3s;
+}
+
+.navbar-nav .nav-item:hover a i {
+    color: #3ecf8e;
+    
 }
 
 .navbar .container {
@@ -149,11 +155,11 @@ main {
     color: #3ecf8e;
 }
 
-.register-link {
+.login-register-link {
     color: #3ecf8e;
 }
 
-.register-link:hover {
+.login-register-link:hover {
     color: #3ecf8e;
 }
 
@@ -322,6 +328,7 @@ main {
 .profile-info {
     display: flex;
     flex-direction: column;
+    margin-top: 40px;
 }
 
 .profile-info article {
@@ -465,27 +472,27 @@ main {
 }
 
 /*========================== ISSUES ==========================*/
-.buttons {
+.heading h1 {
+    font-size: 1.75rem;
+    color: #6155d6;
+}
+
+.heading hr {
     margin-bottom: 40px;
+    border-color: #eeeeee;
 }
 
-.issue {
-    margin-bottom: 10px;
+.buttons {
+    display: flex;
+    flex-direction: column;
 }
 
-.issue article {
-    padding: 10px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-.issue i {
-    color: #666666;
+.buttons p {
+    margin-bottom: 0;
+    text-align: center;
 }
 
 .create-issue-button {
-    margin-top: 5px;
     -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
     -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
     box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
@@ -505,6 +512,7 @@ main {
     align-items: center;
     background-color:#3ecf8e;
     transition: background-color .3s;
+    border-radius: 3px;
 }
 
 .create-issue-button a:hover {
@@ -513,6 +521,77 @@ main {
 
 .create-issue-button a span:hover {
     background-color: white;
+}
+
+.dropdown {
+    margin: 40px 0;
+}
+
+.dropdown .btn {
+    color: #222222;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.dropdown .btn:focus {
+    border-color: #3ecf8e;
+    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25);
+}
+
+.dropdown .dropdown-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.dropdown .dropdown-toggle::after {
+    content: none;
+}
+
+.dropdown .dropdown-toggle p {
+    margin: 0;
+}
+
+.dropdown .dropdown-toggle i {
+    color: #222222;
+    font-size: 1rem;
+}
+
+.dropdown-menu.show {
+    width: 100%;
+    padding: 0;
+}
+
+.dropdown-item {
+    padding: 10px;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #3ecf8e;
+}
+
+.no-issues-message p {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.issue {
+    margin-bottom: 10px;
+}
+
+.issue article {
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.issue i {
+    color: #666666;
 }
 
 .issue-top-info {
@@ -567,17 +646,27 @@ main {
     font-size: 1rem;
 }
 
+.title-comments {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-comments i {
+    margin-right: 2px;
+}
+
 .issue-bottom-info {
     margin-top: 10px;
 }
 
-.issue-bottom-info a {
+.title-comments a {
     color: #3297d3;
-    white-space: pre-wrap;    
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;   
-    white-space: -o-pre-wrap;   
     word-wrap: break-word;
+    max-width: 90%;
+}
+
+.title-comments p {
+    margin-bottom: 0;
 }
 
 .dates {
@@ -589,12 +678,13 @@ main {
     margin: 0;
 }
 
-.dates p:first-of-type {
-    margin-bottom: 5px;
-}
-
 .dates p:last-of-type {
     color: #666666;
+}
+
+.dates p.created-date {
+    margin-bottom: 5px;
+    color: #222222;
 }
 
 /*========================== ISSUE DETAILS ==========================*/
@@ -603,15 +693,24 @@ main {
     flex-direction: column;
 }
 
+.issue-details hr {
+    width: 100%;
+    border-color: #eeeeee;
+    margin: 20px 0;
+}
+
 .issue_title {
-    font-size: 2rem;
+    color: #6155d6;
+    font-size: 1.75rem;
+    word-wrap: break-word;
+    margin: 0;
 }
 
 .status-and-upvotes {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 0;
 }
 
 .status-and-upvotes section:first-child {
@@ -626,6 +725,10 @@ main {
 .status-and-upvotes i.fa-trash-alt {
     margin-left: 10px;
     color: #f6a4eb;
+}
+
+.status-and-upvotes a {
+    display: flex;
 }
 
 .upvotes a {
@@ -672,6 +775,7 @@ main {
 
 .description {
     margin-top: 10px;
+    word-wrap: break-word;
 }
 
 .description p {
@@ -756,11 +860,13 @@ main {
 }
 
 .comment-body p {
-    white-space: pre-wrap;    
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;   
-    white-space: -o-pre-wrap;   
     word-wrap: break-word;
+}
+
+.no-comments-message {
+    margin-top: 40px;
+    margin-bottom: 0;
+    text-align: center;
 }
 
 /*========================== CREATE ISSUE ==========================*/
@@ -807,7 +913,52 @@ main {
     background-color: white; 
     color: #3ecf8e;
 }
+/*========================== PAGINATION ==========================*/
+.pagination-section {
+    margin-top: 40px;
+}
 
+.pagination-section .col {
+    display: flex;
+    justify-content: center;
+} 
+
+.pagination-section li {
+    width: 35px;
+    height: 35px;
+    font-size: 1.25rem;
+    border: 1px solid white;
+    background-color: #aff1b6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    transition: background-color .3s;
+}
+
+.pagination-section li:hover {
+    background-color: #3ecf8e;
+}
+
+.pagination li.disabled {
+    background-color: #dddddd;
+}
+
+.pagination li.active {
+    background-color: #3ecf8e;
+    color: white;
+}
+
+.pagination li a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+}
 
 /*========================== FOOTER ==========================*/
 footer {
@@ -824,19 +975,6 @@ footer p {
 }
 /*========================== MEDIA QUERIES ==========================*/
 @media only screen and (min-width: 576px) {
-    #navbarSupportedContent {
-        height: 100%
-    }
-    
-    .navbar-nav {
-        background-color: #6155d6;
-        border-bottom: none;
-    }
-    
-    .navbar-nav .nav-item .nav-link {
-        color: white;
-    }
-    
     #login-form {
         padding: 20px;
     }
@@ -873,10 +1011,33 @@ footer p {
     .create-issue article {
         padding: 20px;
     }
+    
+    .description,
+    .date {
+        margin-top: 20px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
+    #navbarSupportedContent {
+        height: 100%
+    }
+    
+    .navbar-nav {
+        background-color: #6155d6;
+        border-bottom: none;
+    }
+    
+    .navbar-nav .nav-item .nav-link {
+        color: white;
+    }
+    
+    .navbar-nav .nav-item .nav-link i {
+        color: white;
+    }
+    
     .profile-info {
+        margin-top: 0;
         padding-right: 0;
     }
     
@@ -927,9 +1088,27 @@ footer p {
         align-self: center;
     }
     
+    .buttons {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 40px;
+    }
+    
     .create-issue button {
         max-width: 250px;
-        align-self: flex-end;
+    }
+    
+    .dropdown {
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 160px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar .container {
+        max-width: 100%
     }
 }
 

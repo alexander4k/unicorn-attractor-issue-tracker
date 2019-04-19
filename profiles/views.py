@@ -30,7 +30,7 @@ def update_profile_image(request):
                 profile.save()
             else:
                 profile = request.user.profile
-                profile.image = ""
+                profile.image = None
                 profile.save()
             return redirect("profile")
         else:
