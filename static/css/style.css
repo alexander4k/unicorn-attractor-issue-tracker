@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Noto Sans', sans-serif;
-    color: #222222;
+    color: #383c40;
 }
 
 h2 {
@@ -11,6 +11,7 @@ h2 {
 
 h3 {
     color: #6155d6;
+    margin-bottom: 20px;
 }
 
 /*============================ MESSAGES ============================*/
@@ -197,6 +198,10 @@ main {
     padding-bottom: 40px;
 }
 
+.home-primary-content hr {
+    border-color: #eeeeee;
+}
+
 .home-secondary-content {
     margin-top: 40px;
 }
@@ -207,6 +212,48 @@ main {
 .home-secondary-content i {
     font-size: 10em;
     color: #3ecf8e;
+}
+
+.home-secondary-content .col-sm-12:last-of-type {
+    margin-top: 40px;
+}
+
+.recent-issues .issue {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.issue-icon {
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.recent-issues .issue i {
+    color: #666666;
+    font-size: 1rem;
+}
+
+.recent-issues .issue p {
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+.recent-issues .large-display {
+    display: none;
+}
+
+.recent-issues p.created-date {
+    color: #666666;
+    font-size: .75rem;
+    align-self: flex-end;
+    margin-left: auto;
 }
 
 /*--------------------------- LOGIN FORM ---------------------------*/
@@ -345,6 +392,10 @@ main {
     text-align: center;  
 }
 
+.profile-info hr {
+    border-color: #eeeeee;
+}
+
 .purchase-upvotes-button {
     border: 1px solid #eeeeee;
     margin-top: 5px;
@@ -438,6 +489,10 @@ main {
     font-size: 1.75rem;
     color: #6155d6;
     text-align: center;
+}
+
+.update-image hr {
+    border-color: #eeeeee;
 }
 
 .update-image > form {
@@ -591,6 +646,7 @@ main {
 }
 
 .issue i {
+    font-size: 1.5rem;
     color: #666666;
 }
 
@@ -723,7 +779,7 @@ main {
 }
 
 .status-and-upvotes i.fa-trash-alt {
-    margin-left: 10px;
+    margin-left: 25px;
     color: #f6a4eb;
 }
 
@@ -960,6 +1016,175 @@ main {
     text-decoration: none;
 }
 
+.upvote-purchase {
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.upvote-purchase h1 {
+    font-size: 1.75rem;
+    color: #6155d6;
+}
+
+.upvote-purchase hr {
+    border-color: #eeeeee;
+}
+
+.upvote-purchase .inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.upvote-purchase .inputs button.continue {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    background-color: #3ecf8e; 
+    border: none;
+    transition: background-color .3s, color .3s;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.upvote-purchase .inputs button.continue:hover {
+    background-color: white; 
+    color: #3ecf8e;
+}
+
+/* input spinner style */
+.input-group span {
+    background-color: #6155d6;
+    color: white;
+    border-left: none;
+}
+
+.input-group button {
+    border-color: #dddddd;
+    transition: background-color .3s, color .3s;
+}
+
+.input-group button:hover {
+    background-color: #3ecf8e !important;
+    color: white !important;
+    border-color: #dddddd !important;
+}
+
+.input-group button:active {
+    background-color: #3ecf8e !important;
+    color: white !important;
+    border-color: #dddddd !important;
+}
+
+.input-group button:focus {
+    border-color: #3ecf8e;
+    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25) !important;
+}
+
+.checkout {
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.checkout h1 {
+    color: #6155d6;
+    font-size: 1.75rem;
+}
+
+.checkout > hr {
+    border-color: #eeeeee;
+}
+
+.purchase-details h2 {
+    margin-bottom: 20px;
+    font-size: 1.35rem;
+}
+
+
+.purchase-details section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.purchase-details section p:last-of-type {
+    font-weight: 700;
+}
+
+.checkout .form-row {
+    margin: 0;
+    margin-top: 40px;
+}
+
+.checkout .form-row label {
+    font-size: .75rem;
+    color: #444444;
+}
+
+.checkout .make-purchase {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    background-color: #3ecf8e; 
+    border: none;
+    transition: background-color .3s, color .3s;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.checkout .make-purchase:hover {
+    background-color: white; 
+    color: #3ecf8e;
+}
+
+.StripeElement {
+    background-color: white;
+    width: 100%;
+    height: 40px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+#card-errors {
+    font-size: 0.75rem;
+    color: #ff6979;
+    margin-top: 10px;
+}
+
+.purchase-finished {
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.purchase-finished h1 {
+    color: #6155d6;
+    font-size: 1.75rem;
+}
+
+.purchase-finished hr {
+    border-color: #eeeeee;
+}
+
+.purchase-finished span {
+    color: #45b2e8;
+}
+
 /*========================== FOOTER ==========================*/
 footer {
     height: 80px;
@@ -975,6 +1200,14 @@ footer p {
 }
 /*========================== MEDIA QUERIES ==========================*/
 @media only screen and (min-width: 576px) {
+    .recent-issues .small-display {
+        display: none;
+    }
+    
+    .recent-issues .large-display {
+        display: initial;
+    }
+    
     #login-form {
         padding: 20px;
     }
@@ -1060,12 +1293,12 @@ footer p {
     }
     
     .update-button {
-        max-width: 250px;
+        max-width: 160px;
         align-self: flex-end;
     }
     
     .comment-add-form button {
-        max-width: 250px;
+        max-width: 190px;
         align-self: flex-end;
     }
     
@@ -1096,13 +1329,60 @@ footer p {
     }
     
     .create-issue button {
-        max-width: 250px;
+        max-width: 180px;
+        margin-left: auto;
     }
     
     .dropdown {
         margin-top: 0;
         margin-bottom: 0;
         width: 160px;
+    }
+    
+    .upvote-purchase {
+        padding: 20px;
+    }
+    
+    .upvote-purchase .inputs {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    
+    .upvote-purchase .inputs .input-group {
+        max-width: 200px;
+    }
+    
+    .upvote-purchase .inputs button.continue {
+        margin-top: 0;
+        margin-left: 20px;
+        max-width: 250px;
+    }
+    
+    .checkout {
+        padding: 20px;
+    }
+    
+    .purchase-details {
+        width: 50%;
+    }
+    
+    #payment-form {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    
+    .checkout .form-row {
+        width: 50%;
+    }
+    
+    .checkout .make-purchase {
+        width: 120px;
+    }
+    
+    .purchase-finished {
+        padding: 20px;
     }
 }
 

@@ -16,6 +16,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     {% block js %}{% endblock %}
     
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+      //<![CDATA[
+      const publishableKey = '{{ publishable }}';
+      //]]>  
+    </script>
+    <script src="{% static 'js/stripe.js' %}"></script>
+    <script src="{% static 'js/bootstrap-input-spinner.js' %}"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("input[type='number']").inputSpinner()
+      });
+    </script>
+    
     <title>{% block page.title %}{% endblock %}</title>
 </head>
 <body>
@@ -33,7 +47,7 @@
             <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'issues' %}">All issues</a>
+            <a class="nav-link" href="{% url 'all_issues' %}">All issues</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'bugs' %}">Bugs</a>

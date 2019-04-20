@@ -13,10 +13,10 @@
         {% if user.is_authenticated %}
         <section class="col">
             <h1>Issue Tracker</h1>
-            <h2>Report issues and propose new features</h2>
+            <h2>Report issues and suggest new features</h2>
             <hr>
             <p>Welcome <span class="username">{{ user.username }}</span>! Head on over to the issues page to start reporting any issues you've come across or to contribute your suggestions to improve our app!</p>
-            <div class="issues-button"><a href="{% url 'issues' %}">View issues</a></div>
+            <div class="issues-button"><a href="{% url 'all_issues' %}">View issues</a></div>
         </section>
         {% else %}
         <section class="col-sm-12 col-lg-7">
@@ -25,7 +25,7 @@
             <hr>
             <p>A place where you can report the bugs you've come across and suggest new features you'd like to see implemented in our Unicorn Attractor app.</p>
             <p>Check out all issues being tracked or <a href="{% url 'register' %}" class="register-link">register an account</a> to add new issues.</p>
-            <div class="issues-button"><a href="{% url 'issues' %}">View issues</a></div>
+            <div class="issues-button"><a href="{% url 'all_issues' %}">View issues</a></div>
         </section>
         <section class="col-sm-12 col-lg-5">
             <form id="login-form" method="POST" action="{% url 'login' %}">
@@ -52,16 +52,46 @@
                 <br><br>
                 If you've thought of a feature that you'd like implemented in our application, create a new feature request issue describing it. You can also upvote other user's feature requests to signify that you too would like to see them implemented. 
                 <br><br>
-                Our development time is spent on the bugs and features with the highest priority(the highest number of upvotes).  Each user can upvote a specific bug ticket only once and a feature request an unlimited amout of times.
+                Our development time is spent on the bugs and features with the highest priority(the highest number of upvotes).  Each user can upvote a specific bug ticket only once and a feature request an unlimited amout of times, provided they have upvotes to spend.
                 <br><br>
-                We promise to spend 50% of our time developing new features. In order to do that, each time a feature request is upvoted, it costs money.
-                <br><br>
-                We offer full transparency of our work in real-time.
+                We promise to spend 50% of our time developing new features. In order to do that we charge &euro;5 for an upvote which can be spent on upvoting feature requests.
             </p>
         </article>
         <section class="col-sm-12 col-lg-6 icon">
             <i class="fas fa-question"></i>
         </section>
+        <section class="col-sm-12 col-lg-6 icon">
+            <i class="fas fa-cogs"></i>
+        </section>
+        <article class="col-sm-12 col-lg-6">
+            <h3>Latest Issues</h1>
+            <section class="recent-issues">
+                {% for issue in issues|slice:"6" %}
+                <section class="issue">
+                    {% if issue.issue_type == "BG" %}
+                        <section class="issue-icon">
+                            <i class="fas fa-bug" title="Bug"></i>
+                        </section>
+                    {% else %}
+                        <section class="issue-icon">
+                            <i class="far fa-lightbulb" title="Feature"></i>
+                        </section>
+                    {% endif %}
+                    {% if issue.title|length > 11 %}
+                    <a href="{% url 'issue_details' issue.id %}" class="small-display"><p>{{ issue.title|slice:"11" }}&hellip;</p></a>
+                    {% else %}
+                    <a href="{% url 'issue_details' issue.id %}" class="small-display"><p>{{ issue.title }}</p></a>
+                    {% endif %}
+                    {% if issue.title|length > 32 %}
+                    <a href="{% url 'issue_details' issue.id %}" class="large-display"><p>{{ issue.title|slice:"32" }}&hellip;</p></a>
+                    {% else %}
+                    <a href="{% url 'issue_details' issue.id %}" class="large-display"><p>{{ issue.title }}</p></a>
+                    {% endif %}
+                    <p class="created-date">{{ issue.created|date:"jS F Y" }}</p>
+                </section>
+                {% endfor %}
+            </section>
+        </article>
     </section>
 </main>
 {% endblock %}

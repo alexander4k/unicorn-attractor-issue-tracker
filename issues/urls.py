@@ -3,7 +3,7 @@ from django.contrib import admin
 from .views import all_issues, bugs, features, create_issue, issue_details, add_upvote, delete_issue
 
 urlpatterns = [
-    url(r'^$', all_issues, name="issues"),
+    url(r'^$', all_issues, name="all_issues"),
     url(r'^create_issue/$', create_issue, name="create_issue"),
     url(r'^delete_issue(?P<id>\d+)/$', delete_issue, name="delete_issue"),
     url(r'^issue_details(?P<id>\d+)/$', issue_details, name="issue_details"),

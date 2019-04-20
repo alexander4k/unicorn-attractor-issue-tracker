@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from .forms import RegistrationForm, LoginForm
+from issues.models import Issue
+from .utils.misc import check_if_mobile
 
 def index(request):
     # View for the homepage
@@ -12,8 +14,11 @@ def index(request):
         # Load the messages to display for successful login, logout and registration
         message = request.session['message']
         del request.session['message']
+        
+    issues = Issue.objects.all().order_by("-created")
+    is_mobile = check_if_mobile(request)
 
-    return render(request, 'index.html', {"login_form": login_form, "message":message})
+    return render(request, 'index.html', {"login_form": login_form, "message":message, "issues":issues, "is_mobile":is_mobile})
 
 def login(request):
     # View for login a user in

@@ -3,9 +3,13 @@
         <section class="issue-top-info">
             <section>
                 {% if issue.issue_type == "BG" %}
-                    <i class="fas fa-bug" title="Bug"></i>
+                    <section class="issue-icon">
+                        <i class="fas fa-bug" title="Bug"></i>
+                    </section>
                 {% else %}
-                    <i class="far fa-lightbulb" title="Feature"></i>
+                    <section class="issue-icon">
+                        <i class="far fa-lightbulb" title="Feature"></i>
+                    </section>
                 {% endif %}
                 {% if issue.status == "IC" %}
                 <p class="status ic">{{ issue.status_long }}</p>

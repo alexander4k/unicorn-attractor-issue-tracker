@@ -57,7 +57,7 @@ def delete_issue(request, id):
     issue = get_object_or_404(Issue, pk=id)
     if issue.author == request.user:
         issue.delete()
-    return redirect('issues')
+    return redirect('all_issues')
     
 def issue_details(request, id):
     issue = get_object_or_404(Issue, pk=id)

@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block page.title %}Payment Details{% endblock %} {% block content %}
+<main class="container content">
+    <section class="row">
+        <section class="col-sm-12">
+            <article class="checkout">
+                <h1>Checkout</h1>
+                <hr>
+                {% if messages %}
+                    <section class="messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+                    </section>
+                {% endif %}
+                <article class="purchase-details">
+                    <h2>Purchase Details</h2>
+                    <section>
+                        <p>Number of upvotes:</p>
+                        <p>{{ upvotes_amount }}</p>
+                    </section>
+                    <section>
+                        <p>Price per upvote:</p>
+                        <p>&euro;5</p>
+                    </section>
+                    <hr>
+                    <section>
+                        <p>Total:</p>
+                        <p>&euro;{{ total_price }}</p>
+                    </section>
+                </article>
+                <form role="form" id="payment-form" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <label for="card-element">Credit or debit card</label>
+                        <div id="card-element">
+                            <!-- A Stripe Element will be inserted here. -->
+                        </div>
+
+                        <!-- Used to display form errors. -->
+                        <div id="card-errors" role="alert"></div>
+                    </div>
+                    <button class="make-purchase" type="submit" value="Make purchase">Purchase</button>
+                </form>
+            </article>
+        </section>
+    </section>
+</main>
+{% endblock %}

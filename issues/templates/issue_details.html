@@ -19,10 +19,14 @@
             {% endif %}
             <section class="status-and-upvotes">
                 <section>
-                {% if issue.issue_type == 'BG' %}
-                    <i class="fas fa-bug" title="Bug"></i>
+                {% if issue.issue_type == "BG" %}
+                    <section class="issue-icon">
+                        <i class="fas fa-bug" title="Bug"></i>
+                    </section>
                 {% else %}
-                    <i class="far fa-lightbulb" title="Feature"></i>
+                    <section class="issue-icon">
+                        <i class="far fa-lightbulb" title="Feature"></i>
+                    </section>
                 {% endif %}
                 
                 {% if issue.status == "IC" %}
@@ -34,7 +38,9 @@
                 {% endif %}
                 
                 {% if user.is_authenticated and user == issue.author %}
-                    <a href="{% url 'delete_issue' issue.id %}"><i class="fas fa-trash-alt" title="Delete"></i> </a>
+                    <section class="issue-icon">
+                        <a href="{% url 'delete_issue' issue.id %}"><i class="fas fa-trash-alt" title="Delete"></i> </a>
+                    </section>
                 {% endif %}
                 </section>
                 <section class="upvotes">
