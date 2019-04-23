@@ -1,0 +1,39 @@
+<!-- Row for each issue to display on the index page -->
+<section class="issue">
+  {% if issue.issue_type == "BG" %}
+  <!-- Icon to display depending on the type of issue -->
+  <section class="issue-icon">
+    <i class="fas fa-bug" title="Bug"></i>
+  </section>
+  {% else %}
+  <section class="issue-icon">
+    <i class="far fa-lightbulb" title="Feature"></i>
+  </section>
+  {% endif %}
+  {% if issue.title|length > 18 %}
+  <!-- 
+    Truncate the title if longer than 18 characters
+    for devices smaller then 578px
+  -->
+  <a href="{% url 'issue_details' issue.id %}" class="small-display">
+    <p>{{ issue.title|slice:"18" }}&hellip;</p>
+  </a>
+  {% else %}
+  <a href="{% url 'issue_details' issue.id %}" class="small-display">
+    <p>{{ issue.title }}</p>
+  </a>
+  {% endif %}
+  {% if issue.title|length > 38 %}
+  <!-- 
+    Truncate the title if longer than 38 characters
+    for devices larger then 578px
+  -->
+  <a href="{% url 'issue_details' issue.id %}" class="large-display">
+    <p>{{ issue.title|slice:"38" }}&hellip;</p>
+  </a>
+  {% else %}
+  <a href="{% url 'issue_details' issue.id %}" class="large-display">
+    <p>{{ issue.title }}</p>
+  </a>
+  {% endif %}
+</section>

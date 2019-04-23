@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UpdateImageForm
 from django.http import Http404
 
-@login_required    
+from .forms import UpdateImageForm
+
+   
 def profile(request):
-    # A view to display user's profile
+    """
+    View to display a user's profile
+    If a user has no profile, sends the user to the 404 page
+    """
     if not hasattr(request.user, 'profile'):
         raise Http404 
     else:
@@ -15,6 +19,10 @@ def profile(request):
 
 @login_required
 def update_profile_image(request):
+    """
+    View to update a user's profile image
+    If a user has no profile, sends the user to the 404 page
+    """
     if not hasattr(request.user, 'profile'):
         raise Http404 
     else:

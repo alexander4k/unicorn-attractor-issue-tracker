@@ -1,23 +1,49 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+<!--
+  Page to allow a user to select the numner
+  of upvotes they want to purchase 
+-->
+{% block js %}
+<script src="{% static 'js/bootstrap-input-spinner.js' %}"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("input[type='number']").inputSpinner()
+  });
+</script>
+{% endblock %}
+
 {% block page.title %}Payment{% endblock %}
+
 {% block content %}
 <main class="container content">
-      <section class="row">
-            <section class="col-sm-12">
-                <article class="upvote-purchase">
-                    <h1>Purchase Upvotes</h1>
-                    <hr>
-                    <p>Upvotes allow you to vote on either your own feature requests or other user's. Each upvote costs &euro;5.</p>
-                    <form name="begin_purchase_form" method="POST">
-                        {% csrf_token %}
-                        <p>How many upvotes would you like to purchase?</p>
-                        <section class="inputs">
-                            <input data-prefix="&euro;" value="1" min="0" max="100" step="1" type="number" name="upvotes_amount"/>
-                            <button class="btn continue" type="submit" value="Continue with purchase">Continue with purchase</button>
-                        </section>
-                    </form>
-                </article>
-            </section>
-      </section>
+  <section class="row">
+    <section class="col-sm-12">
+      <article class="upvote-purchase">
+        <h1>Purchase Upvotes</h1>
+        <hr>
+        <p>
+          Upvotes allow you to vote on either your own feature
+          requests or other user's. Each upvote costs &euro;5.
+        </p>
+        <form name="begin_purchase_form" method="POST">
+          <!-- Form for selecting the number of upvotes to purchase -->
+          {% csrf_token %}
+          <p>How many upvotes would you like to purchase?</p>
+          <section class="inputs">
+            <!-- Bootstrap input spinner -->
+            <input 
+              data-prefix="&euro;" value="1" min="0" 
+              max="100" step="1" type="number" name="upvotes_amount" />
+            <button 
+              class="button continue" type="submit"
+              value="Continue with purchase">
+              Continue with purchase
+            </button>
+          </section>
+        </form>
+      </article>
+    </section>
+  </section>
 </main>
 {% endblock %}

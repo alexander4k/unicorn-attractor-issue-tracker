@@ -1,30 +1,31 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
+
 {% block page.title %}Issues Page{% endblock %}
 
 {% block page.heading %}Issues{% endblock %}
 
 {% block content %}
 <main class="container content">
-    <section class="row create-issue">
-        <section class="col">
-            <article>
-                <h1>Create a new issue</h1>
-                {% if messages %}
-                    <section class="messages">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-                    </section>
-                {% endif %}
-                <hr>
-                <form action="{% url 'create_issue' %}" method="POST">
-                    {{ form|as_bootstrap }}
-                    <button type="submit">Create this issue</button>
-                    {% csrf_token %}
-                </form>
-            </article>
-        </article>
+  <section class="row create-issue">
+    <section class="col">
+      <article>
+        <h1>Create a new issue</h1>
+        {% if messages %}
+        <section class="messages">
+          {% for message in messages %}
+          <p>{{ message }}</p>
+          {% endfor %}
+        </section>
+        {% endif %}
+        <hr>
+        <form action="{% url 'create_issue' %}" method="POST">
+          {{ form|as_bootstrap }}
+          <button class="button" type="submit">Create this issue</button>
+          {% csrf_token %}
+        </form>
+      </article>
+      </article>
     </section>
 </main>
 {% endblock %}

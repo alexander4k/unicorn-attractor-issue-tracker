@@ -1,16 +1,23 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+<!-- Page to show once the purchase has been completed -->
 {% block page.title %}Payment Finished{% endblock %}
+
 {% block content %}
 <main class="container content">
-      <section class="row">
-            <section class="col-sm-12">
-                <article class="purchase-finished">
-                    <h1>Purchase Complete</h1>
-                    <hr>
-                    <p>Thank you for your purchase. Your total number of upvotes is now <span><strong>{{ upvotes_owned }}</strong></span></p>
-                    <div class="issues-button"><a href="{% url 'all_issues' %}">View issues</a></div>
-                </article>
-            </section>
-      </section>
+  <section class="row">
+    <section class="col-sm-12">
+      <article class="purchase-finished">
+        <h1>Purchase Complete</h1>
+        <hr>
+        <p>
+          Thank you for your purchase. Your total number of upvotes is now 
+          <span><strong>{{ upvotes_owned }}</strong></span>
+        </p>
+        <div class="issues-button">
+          <a href="{% url 'all_issues' %}">View issues</a>
+        </div>
+      </article>
+    </section>
+  </section>
 </main>
 {% endblock %}

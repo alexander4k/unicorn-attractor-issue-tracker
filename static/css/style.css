@@ -5,13 +5,162 @@ body {
     color: #383c40;
 }
 
+/*============================ HEADINGS ============================*/
+h1 {
+    color: #6155d6;
+}
+
 h2 {
-    font-size: 1.5rem;
+    color: #6155d6;
 }
 
 h3 {
     color: #6155d6;
     margin-bottom: 20px;
+}
+
+h5 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/*============================ BUTTONS ============================*/
+.button {
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    background-color: #3ecf8e; 
+    border: none;
+    transition: background-color .3s, color .3s;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.button:hover {
+    background-color: white; 
+    color: #3ecf8e;
+}
+
+.checkout .make-purchase,
+.upvote-purchase .inputs button.continue,
+.update-button {
+    margin-top: 20px;
+}
+
+.issues-button {
+    width: 200px;
+    height: 60px;
+    border: 1px solid #eeeeee;
+    font-size: 1.375rem;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    transition: background-color .2s;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.issues-button:hover {
+    cursor: pointer;
+    background-color: #6155d6;
+    color: white;
+}
+
+.issues-button a {
+    color: #6155d6;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.issues-button:hover a {
+    color: white;
+}
+
+.button-two {
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}  
+
+.button-two a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color .3s;
+}
+
+.button-two a span {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#3ecf8e;
+    transition: background-color .3s;
+    border-radius: 3px;
+}
+
+.button-two a:hover {
+    color: #3ecf8e;
+}
+
+.button-two a span:hover {
+    background-color: white;
+}
+
+.change-image-button,
+.purchase-upvotes-button {
+    margin-top: 5px;
+}
+
+.purchase-upvotes-button a .purchase-button {
+    background-color: #45b2e8;
+}
+
+.purchase-upvotes-button a:hover {
+    color: #45b2e8;
+}
+
+/* input spinner style */
+.input-group span {
+    background-color: #6155d6;
+    color: white;
+    border-left: none;
+}
+
+.input-group button {
+    border-color: #dddddd;
+    transition: background-color .3s, color .3s;
+}
+
+.input-group button:hover {
+    background-color: #3ecf8e !important;
+    color: white !important;
+    border-color: #dddddd !important;
+}
+
+.input-group button:active {
+    background-color: #3ecf8e !important;
+    color: white !important;
+    border-color: #dddddd !important;
+}
+
+/*============================ FOCUS ============================*/
+#login-form input:focus,
+#register-form input:focus,
+/* input group belongs to input spinner*/
+.input-group button:focus,
+.input-group .form-control:focus,
+.create-issue form input:focus,
+.create-issue form select:focus,
+.create-issue form textarea:focus,
+.comment-add-form textarea:focus,
+.dropdown .btn:focus {
+    border-color: #3ecf8e !important;
+    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25) !important;
 }
 
 /*============================ MESSAGES ============================*/
@@ -63,7 +212,6 @@ h3 {
     padding: 0;
 }
 
-
 .navbar-nav {
     background-color: white;
     border-bottom: 1px solid #bfbfbf;
@@ -73,17 +221,14 @@ h3 {
 .navbar-nav .nav-item {
     padding-left: 10px;
     padding-right: 10px;
-    
 }
 
 .navbar-nav .nav-item a{
     transition: color .3s;
-    
 }
 
 .navbar-nav .nav-item:hover a{
     color: #3ecf8e;
-    
 }
 
 .navbar-nav .nav-item .nav-link {
@@ -102,7 +247,6 @@ h3 {
 
 .navbar-nav .nav-item:hover a i {
     color: #3ecf8e;
-    
 }
 
 .navbar .container {
@@ -124,11 +268,12 @@ h3 {
 
 .navbar-brand img {
     height: 100%;
-    transition: opacity .2s;
+    background-color: #6155d6;
+    transition: background-color .2s;
 }
 
 .navbar-brand img:hover {
-    opacity: .8;
+    background-color: #3ecf8e;
 }
 
 .navbar-toggler {
@@ -140,7 +285,7 @@ h3 {
     font-size: 1.5em;
 }
 
-/*============================ Homepage ============================*/
+/*============================ HOMEPAGE ============================*/
 main {
     margin-top: 20px;
 }
@@ -164,38 +309,13 @@ main {
     color: #3ecf8e;
 }
 
-.issues-button {
-    width: 200px;
-    height: 60px;
-    border: 1px solid #eeeeee;
-    font-size: 1.375rem;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    transition: background-color .2s;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-.issues-button:hover {
-    cursor: pointer;
-    background-color: #6155d6;
-    color: white;
-}
-
-.issues-button a {
-    color: #6155d6;
-    text-decoration: none;
-    transition: color .2s;
-}
-
-.issues-button:hover a {
-    color: white;
-}
-
 .home-primary-content {
     padding-bottom: 40px;
+}
+
+.home-primary-content h1,
+.home-primary-content h2 {
+    color: #383c40;
 }
 
 .home-primary-content hr {
@@ -204,6 +324,7 @@ main {
 
 .home-secondary-content {
     margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .home-secondary-content .icon {
@@ -214,11 +335,25 @@ main {
     color: #3ecf8e;
 }
 
-.home-secondary-content .col-sm-12:last-of-type {
+.home-secondary-content p,
+.home-tertiary-content p {
+    margin: 0;
+}
+
+.home-secondary-content .col-sm-12:last-of-type,
+.home-tertiary-content,
+.home-quaternary-content {
     margin-top: 40px;
 }
 
+.home-tertiary-content .col-sm-12,
+.home-quaternary-content .col-sm-12, 
+.home-primary-content p {
+    margin-bottom: 40px;
+}
+
 .recent-issues .issue {
+    height: 44px;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -256,7 +391,17 @@ main {
     margin-left: auto;
 }
 
-/*--------------------------- LOGIN FORM ---------------------------*/
+.day_before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 150px;
+    color: #6155d6;
+}
+
+/*========================== HOMEPAGE - LOGIN FORM ==========================*/
 
 #login-form {
     background-color: white;
@@ -276,30 +421,6 @@ main {
 
 #login-form label {
     color: #444444;
-}
-
-#login-form input:focus {
-    border-color: #3ecf8e;
-    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25);
-}
-
-#login-form button {
-    padding: 10px;
-    width: 100%;
-    font-size: 20px;
-    color: white;
-    background-color: #3ecf8e; 
-    border: none;
-    transition: background-color .3s, color .3s;
-    border-radius: 3px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-#login-form button:hover {
-    background-color: white; 
-    color: #3ecf8e;
 }
 
 .link {
@@ -324,7 +445,6 @@ main {
 }
 
 .register h1 {
-    color: #6155d6;
     width: 100%;
     text-align: center;
     font-size: 1.5rem;
@@ -340,29 +460,6 @@ main {
     color: #3ecf8e;
 }
 
-#register-form input:focus {
-    border-color: #3ecf8e;
-}
-
-#register-form button {
-    padding: 10px;
-    width: 100%;
-    font-size: 20px;
-    color: white;
-    background-color: #3ecf8e; 
-    border: none;
-    transition: background-color .3s, color .3s;
-    border-radius: 3px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-#register-form button:hover {
-    background-color: white; 
-    color: #3ecf8e;
-}
-
 /*========================== REGISTER ERROR PAGE ==========================*/
 .register-error {
     margin-top:50px;
@@ -371,7 +468,7 @@ main {
     font-size: 1.25rem;
 }
 
-/*========================== REGISTER ERROR PAGE ==========================*/
+/*========================== PROFILE ==========================*/
 .profile-info {
     display: flex;
     flex-direction: column;
@@ -387,8 +484,6 @@ main {
 }
 
 .profile-info h1 {
-    font-size: 1.75rem;
-    color: #6155d6;
     text-align: center;  
 }
 
@@ -396,41 +491,9 @@ main {
     border-color: #eeeeee;
 }
 
-.purchase-upvotes-button {
-    border: 1px solid #eeeeee;
-    margin-top: 5px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}    
-
 .other-info span {
     color: #45b2e8;
     font-weight: 700;
-}
-
-.purchase-upvotes-button a {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    transition: color .3s;
-}
-
-.purchase-upvotes-button a .purchase-button {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color .3s;
-    background-color: #45b2e8;
-}
-
-.purchase-upvotes-button a:hover {
-    color: #45b2e8;
-}
-
-.purchase-upvotes-button a .purchase-button:hover {
-    background-color: white;
 }
 
 .profile-image {
@@ -446,38 +509,6 @@ main {
     background-position: center;
 }
 
-.change-image-button {
-    border: 1px solid #eeeeee;
-    margin-top: 5px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}  
-
-.change-image-button a {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    transition: color .3s;
-}
-
-.change-image-button a .change-button {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#3ecf8e;
-    transition: background-color .3s;
-}
-
-.change-image-button a:hover {
-    color: #3ecf8e;
-}
-
-.change-image-button a .change-button:hover {
-    background-color: white;
-}
-
 .update-image {
     padding: 10px;
     -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
@@ -486,8 +517,6 @@ main {
 }
 
 .update-image h1 {
-    font-size: 1.75rem;
-    color: #6155d6;
     text-align: center;
 }
 
@@ -506,32 +535,7 @@ main {
     width: 100%;
 }
 
-.update-button {
-    background-color: #3ecf8e;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    width: 100%;
-    font-size: 20px;
-    padding: 10px;
-    margin-top: 10px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    transition: background-color .3s, color .3s;
-}
-
-.update-button:hover {
-    color: #3ecf8e;
-    background-color: white;
-}
-
 /*========================== ISSUES ==========================*/
-.heading h1 {
-    font-size: 1.75rem;
-    color: #6155d6;
-}
-
 .heading hr {
     margin-bottom: 40px;
     border-color: #eeeeee;
@@ -547,37 +551,6 @@ main {
     text-align: center;
 }
 
-.create-issue-button {
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}  
-
-.create-issue-button a {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    transition: color .3s;
-}
-
-.create-issue-button a span {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#3ecf8e;
-    transition: background-color .3s;
-    border-radius: 3px;
-}
-
-.create-issue-button a:hover {
-    color: #3ecf8e;
-}
-
-.create-issue-button a span:hover {
-    background-color: white;
-}
-
 .dropdown {
     margin: 40px 0;
 }
@@ -587,11 +560,6 @@ main {
     -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
     -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
     box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-.dropdown .btn:focus {
-    border-color: #3ecf8e;
-    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25);
 }
 
 .dropdown .dropdown-toggle {
@@ -767,6 +735,16 @@ main {
     justify-content: space-between;
     align-items: center;
     margin-top: 0;
+    position: relative;
+}
+
+.status-and-upvotes .upvotes-message {
+    color: #ff6979;
+    font-size: .75rem;
+    position: absolute;
+    right: 0;
+    top: -20px;
+    text-align: right;
 }
 
 .status-and-upvotes section:first-child {
@@ -797,7 +775,8 @@ main {
     text-decoration: none;
 }
 
-.upvotes a i {
+.upvotes a i,
+.upvotes-disabled i {
     color: #3297d3;
     font-size: 1rem;
 }
@@ -814,7 +793,6 @@ main {
 
 .upvotes p {
     margin: 0;
-    
 }
 
 .upvotes-done {
@@ -822,6 +800,13 @@ main {
     color: white;
     padding: 0 5px;
     background-color: #3297d3;
+}
+
+.upvotes-disabled {
+    margin: 0;
+    outline: 1px solid #dddddd;
+    color: #3297d3;
+    padding: 0 5px;
 }
 
 .upvotes-done i {
@@ -855,29 +840,6 @@ main {
     display:flex;
     flex-direction: column;
 }
-.comment-add-form textarea:focus {
-    border-color: #3ecf8e;
-    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25);
-}
-
-.comment-add-form button {
-    padding: 10px;
-    width: 100%;
-    font-size: 20px;
-    color: white;
-    background-color: #3ecf8e; 
-    border: none;
-    transition: background-color .3s, color .3s;
-    border-radius: 3px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-.comment-add-form button:hover {
-    background-color: white; 
-    color: #3ecf8e;
-}
 
 .comments-list {
     margin-top: 40px;
@@ -895,6 +857,7 @@ main {
     -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
     box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
 }
+
 .user-image {
     margin-right: 10px;
 }
@@ -934,8 +897,6 @@ main {
 }
 
 .create-issue h1 {
-    color: #6155d6;
-    font-size: 1.75rem;
     text-align: center;
 }
 
@@ -944,31 +905,94 @@ main {
     flex-direction: column;
 }
 
-.create-issue form input:focus,
-.create-issue form select:focus,
-.create-issue form textarea:focus {
-    border-color: #3ecf8e;
-    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25);
-}
-
-.create-issue button {
+/*========================== BEGIN PURCHASE ==========================*/
+.upvote-purchase {
     padding: 10px;
-    width: 100%;
-    font-size: 20px;
-    color: white;
-    background-color: #3ecf8e; 
-    border: none;
-    transition: background-color .3s, color .3s;
-    border-radius: 3px;
     -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
     -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
     box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
 }
 
-.create-issue button:hover {
-    background-color: white; 
-    color: #3ecf8e;
+.upvote-purchase hr {
+    border-color: #eeeeee;
 }
+
+.upvote-purchase .inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+/*========================== CONTINUE PURCHASE ==========================*/
+.checkout {
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.checkout > hr {
+    border-color: #eeeeee;
+}
+
+.purchase-details h2 {
+    color: #383c40;
+    margin-bottom: 20px;
+    font-size: 1.35rem;
+}
+
+.purchase-details section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.purchase-details section p:last-of-type {
+    font-weight: 700;
+}
+
+.checkout .form-row {
+    margin: 0;
+    margin-top: 40px;
+}
+
+.checkout .form-row label {
+    font-size: .75rem;
+    color: #444444;
+}
+
+.StripeElement {
+    background-color: white;
+    width: 100%;
+    height: 40px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+#card-errors {
+    font-size: 0.75rem;
+    color: #ff6979;
+    margin-top: 10px;
+}
+
+/*========================== FINISH PURCHASE ==========================*/
+.purchase-finished {
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
+}
+
+.purchase-finished hr {
+    border-color: #eeeeee;
+}
+
+.purchase-finished span {
+    color: #45b2e8;
+}
+
 /*========================== PAGINATION ==========================*/
 .pagination-section {
     margin-top: 40px;
@@ -1016,175 +1040,6 @@ main {
     text-decoration: none;
 }
 
-.upvote-purchase {
-    padding: 10px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-.upvote-purchase h1 {
-    font-size: 1.75rem;
-    color: #6155d6;
-}
-
-.upvote-purchase hr {
-    border-color: #eeeeee;
-}
-
-.upvote-purchase .inputs {
-    display: flex;
-    flex-direction: column;
-}
-
-.upvote-purchase .inputs button.continue {
-    margin-top: 20px;
-    padding: 10px;
-    width: 100%;
-    font-size: 20px;
-    color: white;
-    background-color: #3ecf8e; 
-    border: none;
-    transition: background-color .3s, color .3s;
-    border-radius: 3px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-.upvote-purchase .inputs button.continue:hover {
-    background-color: white; 
-    color: #3ecf8e;
-}
-
-/* input spinner style */
-.input-group span {
-    background-color: #6155d6;
-    color: white;
-    border-left: none;
-}
-
-.input-group button {
-    border-color: #dddddd;
-    transition: background-color .3s, color .3s;
-}
-
-.input-group button:hover {
-    background-color: #3ecf8e !important;
-    color: white !important;
-    border-color: #dddddd !important;
-}
-
-.input-group button:active {
-    background-color: #3ecf8e !important;
-    color: white !important;
-    border-color: #dddddd !important;
-}
-
-.input-group button:focus {
-    border-color: #3ecf8e;
-    box-shadow: 0 0 0 0.2rem rgba(62, 207, 142, .25) !important;
-}
-
-.checkout {
-    padding: 10px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-.checkout h1 {
-    color: #6155d6;
-    font-size: 1.75rem;
-}
-
-.checkout > hr {
-    border-color: #eeeeee;
-}
-
-.purchase-details h2 {
-    margin-bottom: 20px;
-    font-size: 1.35rem;
-}
-
-
-.purchase-details section {
-    display: flex;
-    justify-content: space-between;
-}
-
-.purchase-details section p:last-of-type {
-    font-weight: 700;
-}
-
-.checkout .form-row {
-    margin: 0;
-    margin-top: 40px;
-}
-
-.checkout .form-row label {
-    font-size: .75rem;
-    color: #444444;
-}
-
-.checkout .make-purchase {
-    margin-top: 20px;
-    padding: 10px;
-    width: 100%;
-    font-size: 20px;
-    color: white;
-    background-color: #3ecf8e; 
-    border: none;
-    transition: background-color .3s, color .3s;
-    border-radius: 3px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-.checkout .make-purchase:hover {
-    background-color: white; 
-    color: #3ecf8e;
-}
-
-.StripeElement {
-    background-color: white;
-    width: 100%;
-    height: 40px;
-    padding: 10px 12px;
-    border-radius: 4px;
-    border: 1px solid transparent;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
-    -webkit-transition: box-shadow 150ms ease;
-    transition: box-shadow 150ms ease;
-}
-
-#card-errors {
-    font-size: 0.75rem;
-    color: #ff6979;
-    margin-top: 10px;
-}
-
-.purchase-finished {
-    padding: 10px;
-    -webkit-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    -moz-box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-    box-shadow: 0px 0px 9px -6px rgba(97,85,214,1);
-}
-
-.purchase-finished h1 {
-    color: #6155d6;
-    font-size: 1.75rem;
-}
-
-.purchase-finished hr {
-    border-color: #eeeeee;
-}
-
-.purchase-finished span {
-    color: #45b2e8;
-}
-
 /*========================== FOOTER ==========================*/
 footer {
     height: 80px;
@@ -1198,8 +1053,10 @@ footer {
 footer p {
     margin: 0;
 }
+
 /*========================== MEDIA QUERIES ==========================*/
 @media only screen and (min-width: 576px) {
+    /*==== INDEX ====*/
     .recent-issues .small-display {
         display: none;
     }
@@ -1208,43 +1065,29 @@ footer p {
         display: initial;
     }
     
-    #login-form {
-        padding: 20px;
-    }
-    
-    .register .register-content {
-        padding: 20px;
-    }
-    
-    .profile-info article {
-        padding: 20px;
-    }
-    
-    .profile-info h1 {
+    /*==== PROFILE/UPDATE PROFILE IMAGE/CREATE ISSUE HEADINGS ====*/
+    .profile-info h1,
+    .update-image h1,
+    .create-issue h1 {
         text-align: left;
     }
     
-    .update-image {
+    /*==== INDEX/REGISTER/PROFILE/UPDATE PROFILE IMAGE/CREATE ISSUE ====*/
+    #login-form,
+    .register .register-content,
+    .profile-info article,
+    .update-image,
+    .create-issue article {
         padding: 20px;
     }
     
-    .update-image h1 {
-        text-align: left;
-    }
-    
+    /*==== ISSUE ====*/
     .dates {
         display: flex;
         justify-content: space-between;
     }
     
-    .create-issue h1 {
-        text-align: left;
-    }
-    
-    .create-issue article {
-        padding: 20px;
-    }
-    
+    /*==== ISSUE DETAILS ====*/
     .description,
     .date {
         margin-top: 20px;
@@ -1252,6 +1095,7 @@ footer p {
 }
 
 @media only screen and (min-width: 768px) {
+    /*==== NAVIGATION ====*/
     #navbarSupportedContent {
         height: 100%
     }
@@ -1261,14 +1105,12 @@ footer p {
         border-bottom: none;
     }
     
-    .navbar-nav .nav-item .nav-link {
-        color: white;
-    }
-    
+    .navbar-nav .nav-item .nav-link,
     .navbar-nav .nav-item .nav-link i {
         color: white;
     }
     
+    /*==== PROFILE ====*/
     .profile-info {
         margin-top: 0;
         padding-right: 0;
@@ -1282,33 +1124,15 @@ footer p {
         margin-top: 0;
     }
     
-    .change-image-button {
+    .change-image-button,
+    .purchase-upvotes-button{
         max-width: 250px;
         align-self: center;
     }
     
-    .purchase-upvotes-button {
-        max-width: 250px;
-        align-self: center;
-    }
-    
-    .update-button {
-        max-width: 160px;
-        align-self: flex-end;
-    }
-    
-    .comment-add-form button {
-        max-width: 190px;
-        align-self: flex-end;
-    }
-    
-    .create-issue-button {
-        max-width: 250px;
-    }
-    
+    /*==== UPDATE PROFILE IMAGE ====*/
     .update-image > form {
         flex-direction: row;
-        
     }
     
     .update-image > form input#id_image {
@@ -1318,9 +1142,22 @@ footer p {
     .update-image > form button {
         margin-left: 10px;
         margin-top: 0;
-        align-self: center;
+        max-width: 160px;
     }
     
+    /*==== ISSUE DETAILS ====*/
+    .comment-add-form button {
+        max-width: 190px;
+        align-self: flex-end;
+    }
+    
+    /*==== CREATE ISSUE ====*/
+    .create-issue button {
+        max-width: 180px;
+        margin-left: auto;
+    }
+
+    /*==== ISSUES ====*/
     .buttons {
         flex-direction: row;
         justify-content: space-between;
@@ -1328,9 +1165,8 @@ footer p {
         margin-bottom: 40px;
     }
     
-    .create-issue button {
-        max-width: 180px;
-        margin-left: auto;
+    .create-issue-button {
+        max-width: 250px;
     }
     
     .dropdown {
@@ -1339,6 +1175,7 @@ footer p {
         width: 160px;
     }
     
+    /*==== BEGIN PURCHASE ====*/
     .upvote-purchase {
         padding: 20px;
     }
@@ -1359,11 +1196,14 @@ footer p {
         max-width: 250px;
     }
     
-    .checkout {
+    /*==== CONTINUE PURCHASE/FINISH PURCHASE ====*/
+    .checkout,
+    .purchase-finished {
         padding: 20px;
     }
     
-    .purchase-details {
+    .purchase-details,
+    .checkout .form-row {
         width: 50%;
     }
     
@@ -1373,30 +1213,25 @@ footer p {
         justify-content: space-between;
     }
     
-    .checkout .form-row {
-        width: 50%;
-    }
-    
     .checkout .make-purchase {
         width: 120px;
-    }
-    
-    .purchase-finished {
-        padding: 20px;
     }
 }
 
 @media only screen and (max-width: 768px) {
+    /*==== NAVIGATION ====*/
     .navbar .container {
         max-width: 100%
     }
 }
 
 @media only screen and (min-width: 992px) {
+    /*==== ALL ====*/
     .content {
         margin-top: 70px;
     }
     
+    /*==== INDEX ====*/
     #login-form {
         margin-top: 0;
     }
@@ -1405,8 +1240,10 @@ footer p {
         display: flex;
         justify-content: center;
         align-items: center;
+        min-height: 400px;
     }
     
+    /*==== ISSUE ====*/
     .issue article {
         padding: 20px;
     }

@@ -1,127 +1,193 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
-{% block page.title %}Issues Page{% endblock %}
+
+{% block page.title %}Issue Details{% endblock %}
 
 {% block page.heading %}Issues{% endblock %}
 
 {% block content %}
 <main class="container content">
-    <section class="row issues">
-        <article class="col-sm-12 issue-details">
-            <h1 class="issue_title">{{ issue.title }}</h1>
-            <hr>
-            {% if messages %}
-                <section class="messages">
-            {% for message in messages %}
-                    <p>{{ message }}</p>
-            {% endfor %}
-                </section>
-            {% endif %}
-            <section class="status-and-upvotes">
-                <section>
-                {% if issue.issue_type == "BG" %}
-                    <section class="issue-icon">
-                        <i class="fas fa-bug" title="Bug"></i>
-                    </section>
-                {% else %}
-                    <section class="issue-icon">
-                        <i class="far fa-lightbulb" title="Feature"></i>
-                    </section>
-                {% endif %}
-                
-                {% if issue.status == "IC" %}
-                    <p class="status ic">{{ issue.status_long }}</p>
-                {% elif issue.status == "IP" %}
-                    <p class="status ip">{{ issue.status_long }}</p>
-                {% else %}
-                    <p class="status ct">{{ issue.status_long }}</p>
-                {% endif %}
-                
-                {% if user.is_authenticated and user == issue.author %}
-                    <section class="issue-icon">
-                        <a href="{% url 'delete_issue' issue.id %}"><i class="fas fa-trash-alt" title="Delete"></i> </a>
-                    </section>
-                {% endif %}
-                </section>
-                <section class="upvotes">
-                {% if upvoting_disabled or not user.profile %}
-                    <p class="upvotes-done"><i class="fas fa-level-up-alt" title="Upvote"></i> {{ issue.total_upvotes }}</p>
-                {% else %}
-                    <a href="{% url 'add_upvote' issue.id %}"><p><i class="fas fa-level-up-alt" title="Upvote"></i> {{ issue.total_upvotes }}</p></a>
-                {% endif %}
-                </section>
-            </section>
-            <section class="description">
-                <p>{{ issue.description }}</p>
-            </section>
-            <section class="date">
-                <p>Created {{ issue.created|date:"jS F Y" }} by <strong>{{ issue.author.username }}</strong></p>
-            </section>
-        </article>
-        <article class="col-sm-12 comments">
-            {% if user.is_authenticated %}
-            <section class="comment-add-form">
-                <form method="POST" name="add_comment_form">
-                    {% csrf_token %}
-                        
-                    {{ comment_form|as_bootstrap }}
-                    <button type="submit">Submit comment</button>
-                </form>
-            </section>
-            {% endif %}
-            {% if comments %}
-                <section class="comments-list">
-                    {% for comment in comments %}
-                    <section class="comment">
-                        <section class="user-image">
-                        {% if comment.author.profile.image %}
-                            <section style="background-image: url('{{MEDIA_URL}}{{ comment.author.profile.image }}')" title="Profile image"></section>
-                        {% else %}
-                            <section style="background-image: url('{{MEDIA_URL}}images/profile_images/default_profile_image.png')" title="Profile image"></section>
-                        {% endif %}
-                        </section>
-                        <article class="comment-content">
-                            <section class="comment-header">
-                                <p>Posted by <strong>{{ comment.author }}</strong> - {{ comment.date_created|date:"jS F Y P" }}</p>
-                            </section>
-                            <hr>
-                            <section class="comment-body">
-                                <p>{{ comment.content }}</p>
-                            </section>
-                        </article>
-                    </section>
-                    {% endfor %}
-                </section>
-            {% else %}
-                <p class="no-comments-message">There are no comments on this issue</p>
-            {% endif %}
-            
-        </article>
-    </section>
-    {% if comments and comments|length > 6 %}
-        <section class="row pagination-section">
-            <section class="col">
-                  <ul class="pagination">
-                    {% if comments.has_previous %}
-                      <li><a href="?page={{ issue_details.previous_page_number }}"><i class="fas fa-caret-left"></i></a></li>
-                    {% else %}
-                      <li class="disabled"><i class="fas fa-caret-left"></i></li>
-                    {% endif %}
-                    {% for i in comments.paginator.page_range %}
-                      {% if comments.number == i %}
-                        <li class="active">{{ i }}</li>
-                      {% else %}
-                        <li><a href="?page={{ i }}">{{ i }}</a></li>
-                      {% endif %}
-                    {% endfor %}
-                    {% if comments.has_next %}
-                      <li><a href="?page={{ issue_details.next_page_number }}"><i class="fas fa-caret-right"></i></a></li>
-                    {% else %}
-                      <li class="disabled"><i class="fas fa-caret-right"></i></li>
-                    {% endif %}
-                  </ul>
-            </section>
+  <section class="row issues">
+    <article class="col-sm-12 issue-details">
+      <!-- 
+        Contains all issue details such as title, description, status etc,
+        as well as messages to display for upvoting
+      -->
+      <h1 class="issue_title">{{ issue.title }}</h1>
+      <hr>
+      <section class="status-and-upvotes">
+        <section>
+          {% if issue.issue_type == "BG" %}
+          <section class="issue-icon">
+            <i class="fas fa-bug" title="Bug"></i>
+          </section>
+          {% else %}
+          <section class="issue-icon">
+            <i class="far fa-lightbulb" title="Feature"></i>
+          </section>
+          {% endif %}
+          {% if issue.status == "IC" %}
+          <!-- Status element color to display based on issue status-->
+          <p class="status ic">{{ issue.status_long }}</p>
+          {% elif issue.status == "IP" %}
+          <p class="status ip">{{ issue.status_long }}</p>
+          {% else %}
+          <p class="status ct">{{ issue.status_long }}</p>
+          {% endif %}
+          {% if user.is_authenticated and user == issue.author %}
+          <!-- 
+            Display the delete button only if a user is logged in AND
+            is the author or the issue 
+          -->
+          <section class="issue-icon">
+            <a href="{% url 'delete_issue' issue.id %}">
+              <i class="fas fa-trash-alt" title="Delete"></i> 
+            </a>
+          </section>
+          {% endif %}
         </section>
-    {% endif %}
+        {% if message %}
+        <!-- 
+          Messages to display if a user has no upvotes but tries to upvote a feature request or
+          if a user somehow attempts to upvote a bug issue if they already upvoted it 
+        -->
+        <span class="upvotes-message">{{ message }}</span> 
+        {% endif %}
+        <section class="upvotes">
+          {% if not user.profile %}
+          <!-- If user has no profile, don't allow them to upvote an issue -->
+          <p class="upvotes-disabled">
+            <i class="fas fa-level-up-alt" title="Upvote"></i> 
+            {{ issue.total_upvotes }}
+          </p>
+          {% elif upvoting_disabled %}
+          <!-- 
+            If a user has already upvoted a bug, 
+            change the style of the element and disable it 
+          -->
+          <p class="upvotes-done">
+            <i class="fas fa-level-up-alt" title="Upvote"></i> 
+            {{ issue.total_upvotes }}
+          </p>
+          {% else %}
+          <a href="{% url 'add_upvote' issue.id %}">
+            <!-- Button to upvote an issue -->
+            <p>
+              <i class="fas fa-level-up-alt" title="Upvote"></i> 
+              {{ issue.total_upvotes }}
+            </p>
+          </a>
+          {% endif %}
+        </section>
+      </section>
+      <section class="description">
+        <p>{{ issue.description }}</p>
+      </section>
+      <section class="date">
+        <p>
+          Created {{ issue.created|date:"jS F Y" }} by 
+          <strong>{{ issue.author.username }}</strong>
+        </p>
+      </section>
+    </article>
+    <article class="col-sm-12 comments">
+      {% if user.is_authenticated %}
+      <!-- 
+        Only allow logged in users to see the form for adding
+        comments so that anonymous users can't post comments 
+      -->
+      <section class="comment-add-form">
+        <!-- Form for adding comments -->
+        <form method="POST" name="add_comment_form">
+          {% csrf_token %}
+          {{ comment_form|as_bootstrap }}
+          <button class="button" type="submit">Submit comment</button>
+        </form>
+      </section>
+      {% endif %}
+      {% if comments %}
+      <!-- Display only if there are any comments in the comments list -->
+      <section class="comments-list">
+        {% for comment in comments %}
+        <section class="comment">
+          <section class="user-image">
+            {% if comment.author.profile.image %}
+            <!-- 
+              Display a user's profile image unless they don't have one, in that case display the
+              default profile image 
+            -->
+            <section 
+              style="background-image: url('{{MEDIA_URL}}{{ comment.author.profile.image }}')" 
+              title="Profile image"></section>
+            {% else %}
+            <section 
+              style="background-image: url('{{MEDIA_URL}}images/profile_images/default.png')" 
+              title="Profile image"></section>
+            {% endif %}
+          </section>
+          <article class="comment-content">
+            <section class="comment-header">
+              <p>
+                Posted by 
+                <strong>{{ comment.author }}</strong> 
+                - {{ comment.date_created|date:"jS F Y P" }}
+              </p>
+            </section>
+            <hr>
+            <section class="comment-body">
+              <!-- Text of a comment -->
+              <p>{{ comment.content }}</p>
+            </section>
+          </article>
+        </section>
+        {% endfor %}
+      </section>
+      {% else %}
+      <!-- If the list contains no comments -->
+      <p class="no-comments-message">
+        There are no comments on this issue
+      </p>
+      {% endif %}
+    </article>
+  </section>
+  {% if comments and comments|length > 10 %}
+  <!-- 
+    Only display pagination buttons if comments contain
+    any and there are more than 10 in the list 
+  -->
+  <section class="row pagination-section">
+    <section class="col">
+      <ul class="pagination">
+        {% if comments.has_previous %}
+        <li>
+          <a href="?page={{ issue_details.previous_page_number }}">
+            <i class="fas fa-caret-left"></i>
+          </a>
+        </li>
+        {% else %}
+        <li class="disabled">
+          <i class="fas fa-caret-left"></i>
+        </li>
+        {% endif %}
+        {% for i in comments.paginator.page_range %}
+          {% if comments.number == i %}
+          <li class="active">{{ i }}</li>
+          {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if comments.has_next %}
+        <li>
+          <a href="?page={{ issue_details.next_page_number }}">
+            <i class="fas fa-caret-right"></i>
+          </a>
+        </li>
+        {% else %}
+        <li class="disabled"><i class="fas fa-caret-right"></i></li>
+        {% endif %}
+      </ul>
+    </section>
+  </section>
+  {% endif %}
 </main>
 {% endblock %}

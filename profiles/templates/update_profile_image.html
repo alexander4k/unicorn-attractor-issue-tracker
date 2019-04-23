@@ -1,24 +1,34 @@
-{% extends 'base.html' %} {% block page.title %}Profile Page{% endblock %} {% block content %}
+{% extends 'base.html' %}
+<!-- Page for updating user profile image -->
+{% block page.title %}Profile Page{% endblock %}
+
+{% block content %}
 <main class="container content">
-      <section class="row">
-            <section class="col">
-                  <section class="update-image">
-                        <h1>Update image</h3>
-                        {% if messages %}
-                            <section class="messages">
-                        {% for message in messages %}
-                                <p>{{ message }}</p>
-                        {% endfor %}
-                            </section>
-                        {% endif %}
-                        <hr>
-                        <form name="update-image-form" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form }}
-                            <button class="update-button" type="submit">Update image</button>
-                        </form>
-                  </section>
-            </section>
+  <section class="row">
+    <section class="col">
+      <section class="update-image">
+        <h1>Update image</h3>
+          {% if messages %}
+          <!-- Messages to display if there was a form error -->
+          <section class="messages">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+          </section>
+          {% endif %}
+          <hr>
+          <form 
+            name="update-image-form" 
+            method="POST" 
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button class="button update-button" type="submit">
+              Update image
+            </button>
+          </form>
       </section>
+    </section>
+  </section>
 </main>
 {% endblock %}

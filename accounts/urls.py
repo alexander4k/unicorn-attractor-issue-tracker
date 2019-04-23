@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 from .views import *
 from profiles import urls as urls_profiles
+
 urlpatterns = [
     url(r'^register/$', register, name='register'),
     url(r'^register_error/$', register_error, name='register_error'),

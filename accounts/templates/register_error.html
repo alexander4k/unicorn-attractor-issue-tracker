@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
+
 {% block page.title %}Registration Error{% endblock %}
 
 {% block content %}
 <main class="container">
-    <p class="register-error">We apologize but we were unable to register your account. <a href="{% url 'register' %}">Try again</a></p>
+  <!-- Page to redirect a user to if there is an error during registration -->
+  <p class="register-error">
+    We apologize but we were unable to register your account. 
+    <a href="{% url 'register' %}">Try again</a>
+  </p>
 </main>
 {% endblock %}

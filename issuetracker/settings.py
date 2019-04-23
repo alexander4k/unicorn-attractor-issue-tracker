@@ -19,10 +19,8 @@ if os.path.exists('env.py'):
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEVELOPMENT', False) == 'True'
 
 ALLOWED_HOSTS = [os.environ.get("C9_HOSTNAME")]
@@ -42,6 +40,7 @@ INSTALLED_APPS = [
     'profiles',
     'issues',
     'transactions',
+    'chartjs',
 ]
 
 MIDDLEWARE = [

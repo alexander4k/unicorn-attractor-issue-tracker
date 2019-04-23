@@ -1,44 +1,60 @@
+<!-- Code to include in order to display an issue row -->
 <section class="col-sm-12 issue">
-    <article>
-        <section class="issue-top-info">
-            <section>
-                {% if issue.issue_type == "BG" %}
-                    <section class="issue-icon">
-                        <i class="fas fa-bug" title="Bug"></i>
-                    </section>
-                {% else %}
-                    <section class="issue-icon">
-                        <i class="far fa-lightbulb" title="Feature"></i>
-                    </section>
-                {% endif %}
-                {% if issue.status == "IC" %}
-                <p class="status ic">{{ issue.status_long }}</p>
-                </a>
-                {% elif issue.status == "IP" %}
-                <p class="status ip">{{ issue.status_long }}</p>
-                </a>
-                {% else %}
-                <p class="status ct">{{ issue.status_long }}</p>
-                </a>
-                {% endif %} 
-            </section>
-            <p class="upvotes-count"><i class="fas fa-level-up-alt" title="Upvote"></i></i> {{ issue.total_upvotes }}</p>
+  <article>
+    <section class="issue-top-info">
+      <section>
+        {% if issue.issue_type == "BG" %}
+        <!-- Icon to display depending on issue type-->
+        <section class="issue-icon">
+          <i class="fas fa-bug" title="Bug"></i>
         </section>
-        <section class="issue-bottom-info">
-            <section class="title-comments">
-                <a href="{% url 'issue_details' issue.id %}" class="title">
-                    <p>{{ issue.title }}</p>
-                </a>
-                <p><i class="far fa-comments" title="Comments"></i> {{ issue.total_comments }}</p>
-            </section>
-            <section class="dates">
-                <p class="created-date">Created on {{ issue.created|date:"jS F Y" }} by <strong>{{ issue.author.username }}</strong></p>
-                {% if issue.completed %}
-                <p>Completed on {{ issue.completed|date:"jS F Y" }}</p>
-                {% elif issue.updated %}
-                <p>Updated on {{ issue.updated|date:"jS F Y P" }}</p>
-                {% endif %}
-            </section>
+        {% else %}
+        <section class="issue-icon">
+          <i class="far fa-lightbulb" title="Feature"></i>
         </section>
-    </article>
+        {% endif %}
+        {% if issue.status == "IC" %}
+        <!-- Status element color to display depending on issue status -->
+        <p class="status ic">{{ issue.status_long }}</p>
+        {% elif issue.status == "IP" %}
+        <p class="status ip">{{ issue.status_long }}</p>
+        {% else %}
+        <p class="status ct">{{ issue.status_long }}</p>
+        {% endif %}
+      </section>
+      <p class="upvotes-count">
+        <!-- Total issue upvotes-->
+        <i class="fas fa-level-up-alt" title="Upvote"></i> 
+        {{ issue.total_upvotes }}
+      </p>
+    </section>
+    <section class="issue-bottom-info">
+      <section class="title-comments">
+        <a href="{% url 'issue_details' issue.id %}" class="title">
+          <!-- Issue title redirects to it's details page -->
+          <p>{{ issue.title }}</p>
+        </a>
+        <p>
+          <i class="far fa-comments" title="Comments"></i> 
+          <!-- Total number of comments -->
+          {{ issue.total_comments }}
+        </p>
+      </section>
+      <section class="dates">
+        <p class="created-date">
+          Created on {{ issue.created|date:"jS F Y" }} by 
+          <strong>{{ issue.author.username }}</strong>
+        </p>
+        {% if issue.completed %}
+        <!-- 
+          Display only if issue has been completed otherwise
+          display last updated date if issue contains it 
+        -->
+        <p>Completed on {{ issue.completed|date:"jS F Y" }}</p>
+        {% elif issue.updated %}
+        <p>Updated on {{ issue.updated|date:"jS F Y P" }}</p>
+        {% endif %}
+      </section>
+    </section>
+  </article>
 </section>

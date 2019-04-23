@@ -1,11 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from datetime import datetime
+from django.utils import timezone
 
-
-# Create your models here.
 class Issue(models.Model):
     TYPE_CHOICES = (
         ("BG", "Bug"),
@@ -58,14 +56,20 @@ class Comment(models.Model):
         return 'Comment on %s by %s' % (self.related_issue.title, self.author.username)
         
 @receiver(pre_save, sender=Issue)
-def set_date_on_complete(sender, instance, **kwargs):
+def set_date_on_status_change(sender, instance, **kwargs):
+    """ 
+    Called while an issue is being saved, compares the new version of an issue
+    to the version before it was saved for changes on status
+    When changing the status of an issue, update the 'completed' and 'updated' fields
+    if the status is changed to 'Complete' otherwise update just the 'updated' field
+    """
     try:
         original_issue = sender.objects.get(pk=instance.pk)
     except sender.DoesNotExist:
         pass
     else:
         if original_issue.status != instance.status and instance.status == "CT":
-            instance.completed = datetime.now()
-            instance.updated = datetime.now()
+            instance.completed = timezone.now()
+            instance.updated = timezone.now()
         elif original_issue.status != instance.status:
-            instance.updated = datetime.now()
+            instance.updated = timezone.now()

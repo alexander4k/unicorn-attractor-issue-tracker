@@ -15,13 +15,18 @@ class Profile(models.Model):
     
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
-    # Every time a user registers an account, create that user's profile
+    """
+    If a user account is registered, create a corresponding user profile
+    """
     if created:
         Profile.objects.create(user=instance)
 
 @receiver(pre_save, sender=Profile)
 def auto_delete_image_file_on_change(sender, instance, **kwargs):
-    # Delete old image when updating profile image
+    """
+    When a user changes their profile picture, 
+    automatically delete the old image file
+    """
     if not instance.pk:
         return False
     else:

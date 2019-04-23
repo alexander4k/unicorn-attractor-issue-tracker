@@ -23,7 +23,7 @@ def filter_and_sort_issues(filter_by, sort_type=None):
     
 def pagination(item_list, page):
     """
-    Used for limiting the number of items on page at one time
+    Used for limiting the number of items on page at
     """
     current_page = page
     paginator = Paginator(item_list, 10)

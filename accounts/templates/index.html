@@ -1,97 +1,314 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
-{% block js %}{% endblock %}
+
 {% block page.title %}Issue Tracker{% endblock %}
+
 {% block content %}
+
 {% if message %}
+<!-- Messages displayed for successfull login, registration and logout-->
 <section class="row">
-    <span class="message">{{ message }}</span>
+  <span class="message">{{ message }}</span>
 </section>
 {% endif %}
+
 <main class="container content">
-    <section class="row home-primary-content">
-        {% if user.is_authenticated %}
-        <section class="col">
-            <h1>Issue Tracker</h1>
-            <h2>Report issues and suggest new features</h2>
-            <hr>
-            <p>Welcome <span class="username">{{ user.username }}</span>! Head on over to the issues page to start reporting any issues you've come across or to contribute your suggestions to improve our app!</p>
-            <div class="issues-button"><a href="{% url 'all_issues' %}">View issues</a></div>
+  <section class="row home-primary-content">
+    <!-- The first thing users see on the homepage -->
+    {% if user.is_authenticated %}
+    <!-- Don't show the login form when a user is logged in-->
+    <article class="col">
+      <h1>Issue Tracker</h1>
+      <h2>Report issues and suggest new features</h2>
+      <hr>
+      <p>
+        Welcome <span class="username">{{ user.username }}</span>!
+        Head on over to the issues page to start reporting any issues
+        you've come across or to contribute your suggestions to improve our app!
+      </p>
+      <div class="issues-button">
+        <a href="{% url 'all_issues' %}">View issues</a>
+      </div>
+    </article>
+    {% else %}
+    <article class="col-sm-12 col-lg-7">
+      <h1>Issue Tracker</h1>
+      <h2>Report issues and propose new features</h2>
+      <hr>
+      <p>
+        A place where you can report the bugs you've come across and
+        suggest new features you'd like to see implemented in our Unicorn
+        Attractor app.
+      </p>
+      <p>
+        Check out all issues being tracked or
+        <a href="{% url 'register' %}" class="login-register-link">
+          register an account
+        </a> 
+        to add new issues.
+      </p>
+      <section class="issues-button">
+        <a href="{% url 'all_issues' %}">View issues</a>
+      </section>
+    </article>
+    <section class="col-sm-12 col-lg-5">
+      <form id="login-form" method="POST" action="{% url 'login' %}">
+        <!-- Login form -->
+        <p class="login-form-heading">Log in</p>
+        {% csrf_token %}
+        {{ login_form|as_bootstrap }}
+        <button class="button"type="submit">Login</button>
+        <section class="link">
+          <p>Don't have an account yet?</p>
+          <a href="{% url 'register' %}" class="login-register-link">
+            Register now!
+          </a>
         </section>
-        {% else %}
-        <section class="col-sm-12 col-lg-7">
-            <h1>Issue Tracker</h1>
-            <h2>Report issues and propose new features</h2>
-            <hr>
-            <p>A place where you can report the bugs you've come across and suggest new features you'd like to see implemented in our Unicorn Attractor app.</p>
-            <p>Check out all issues being tracked or <a href="{% url 'register' %}" class="register-link">register an account</a> to add new issues.</p>
-            <div class="issues-button"><a href="{% url 'all_issues' %}">View issues</a></div>
-        </section>
-        <section class="col-sm-12 col-lg-5">
-            <form id="login-form" method="POST" action="{% url 'login' %}">
-                <p class="login-form-heading">Log in</p>
-                {% csrf_token %}
-                    
-                {{ login_form|as_bootstrap }}
-                <button type="submit">Login</button>
-                <section class="link">
-                    <p>Don't have an account yet?</p>
-                    <a href="{% url 'register' %}" class="login-register-link">Register now!</a>
-                </section>
-            </form>
-        </section>
+      </form>
+    </section>
+    {% endif %}
+  </section>
+  <hr>
+  <section class="row home-secondary-content">
+    <!-- 
+      Explanation of the site and how it works for the user along
+      with a pie chart summary of all the current issues 
+    -->
+    <article class="col-sm-12 col-lg-6">
+      <h2>How it works</h2>
+        <p>
+          Issues come in two varieties - bugs and features.
+          <br><br> 
+          You can create new issue tickets for bugs you've come across
+          or if there already exists an issue for that specific bug, you
+          can upvote that issue to signify that you've come across it too.
+          <br><br> 
+          If you've thought of a feature that you'd like implemented in our
+          application, create a new feature request issue describing it. You
+          can also upvote other user's feature requests to signify that you
+          too would like to see them implemented.
+          <br><br> 
+          Our development time is spent on the bugs and features with the
+          highest priority(the highest number of upvotes). Each user can upvote
+          a specific bug ticket only once and a feature request an unlimited
+          amout of times, provided they have
+          upvotes to spend.
+          <br><br> 
+          We promise to spend 50% of our time developing new features. In order
+          to do that we charge &euro;5 for an upvote which can be spent on
+          upvoting feature requests.
+        </p>
+    </article>
+    <section class="col-sm-12 col-lg-6 icon">
+      <i class="fas fa-question"></i>
+    </section>
+    <article class="col-sm-12 col-lg-6 order-lg-2">
+      <h2>Statistics</h2>
+        <p>
+          We aim to be completely transparent with our users about the work
+          we put into fixing issues and implementing new features.
+          <br><br> 
+          Below you can check out graphs showing off how many issues are 
+          completed over time and summaries of current issues.
+        </p>
+    </article>
+    <section class="col-sm-12 col-lg-6 order-lg-1">
+      <!-- Pie chart of all current issues grouped by status -->
+      <canvas id="by_status" width="400" height="250"></canvas>
+    </section>
+  </section>
+  <hr>
+  <section class="row home-tertiary-content">
+    <!-- Contains summaries of issues by popularity and date -->
+    {% if recent_issues %}
+    <!-- Display only if there are any issues in the recent_issues list -->
+    <article class="col-sm-12 col-lg-6">
+      <h5>Most Recently Updated Issues</h5>
+      <section class="recent-issues">
+        {% for issue in recent_issues|slice:"6" %}
+          <!-- Show the first 6 most recently updated issues -->
+          {% include 'issue_row.html' %}
+        {% endfor %} 
+        {% if number_recent_to_six > 0 %}
+          <!-- If there less than 6 issues but some exist -->
+          {% for i in number_recent_to_six %}
+          <!-- Display an empty issue row in order to not have empty space -->
+          <section class="issue">
+          </section>
+          {% endfor %}
         {% endif %}
+      </section>
+    </article>
+    {% endif %}
+    {% if oldest_issues %}
+    <!-- Display only if there are any issues in the oldest_issues list -->
+    <article class="col-sm-12 col-lg-6">
+      <h5>Least Recently Updated Issues</h5>
+      <section class="recent-issues">
+        {% for issue in oldest_issues|slice:"6" %}
+        <!-- Show the first 6 oldest issues by updated date -->
+          {% include 'issue_row.html' %}
+        {% endfor %}
+        {% if number_oldest_to_six > 0 %}
+        <!-- If there are less than 6 issues but some exist-->
+          {% for i in number_oldest_to_six %}
+          <!-- Display an empty issue row in order to not have empty space -->
+          <section class="issue">
+          </section>
+          {% endfor %}
+        {% endif %}
+      </section>
+    </article>
+    {% endif %}
+    {% if most_popular_bugs %}
+    <!-- Display only if there are any issues in most_popular_bugs list -->
+    <article class="col-sm-12 col-lg-6">
+      <h5>Most Popular Bugs</h5>
+      <section class="recent-issues">
+        {% for issue in most_popular_bugs|slice:"6" %}
+        <!-- Show the first 6 most popular bugs by upvotes -->
+          {% include 'issue_row.html' %}
+        {% endfor %}
+        {% if number_bugs_to_six > 0 %}
+        <!-- If there are less than 6 issues but some exist-->
+          {% for i in number_bugs_to_six %}
+          <!-- Display an empty issue row in order to not have empty space -->
+          <section class="issue">
+          </section>
+          {% endfor %}
+        {% endif %}
+      </section>
+    </article>
+    {% endif %}
+    {% if most_popular_features %}
+    <!-- Display only if there are any issues in most_popular_features list -->
+    <article class="col-sm-12 col-lg-6">
+      <h5>Most Popular Features</h5>
+      <section class="recent-issues">
+        {% for issue in most_popular_features|slice:"6" %}
+        <!-- Show the first 6 most popular feature requests by upvotes -->
+          {% include 'issue_row.html' %}
+        {% endfor %}
+        {% if number_features_to_six > 0 %}
+        <!-- If there are less than 6 issues but some exist-->
+          {% for i in number_features_to_six %}
+          <!-- Display an empty issue row in order to not have empty space -->
+          <section class="issue">
+          </section>
+          {% endfor %}
+        {% endif %}
+      </section>
+    </article>
+    {% endif %}
+  </section>
+  <hr>
+  <section class="row home-quaternary-content">
+    <!-- Contains statistics and graphs regarding current issues -->
+    <section class="col-sm-12 col-lg-6">
+      <h5>Issues Completed Today - {{ today|date:"jS M Y" }}</h5>
+      <!-- The number of issues completed the day before -->
+      <section class="day_before">
+        <p>{{ issues_today }}</p>
+      </section>
     </section>
-    <hr>
-    <section class="row home-secondary-content">
-        <article class="col-sm-12 col-lg-6">
-            <h3>How it works</h1>
-            <p>Issues come in two varieties - bugs and features.
-                <br><br>
-                You can create new issue tickets for bugs you've come across or if there already exists an issue for that specific bug, you can upvote that issue to signify that you've come across it too.
-                <br><br>
-                If you've thought of a feature that you'd like implemented in our application, create a new feature request issue describing it. You can also upvote other user's feature requests to signify that you too would like to see them implemented. 
-                <br><br>
-                Our development time is spent on the bugs and features with the highest priority(the highest number of upvotes).  Each user can upvote a specific bug ticket only once and a feature request an unlimited amout of times, provided they have upvotes to spend.
-                <br><br>
-                We promise to spend 50% of our time developing new features. In order to do that we charge &euro;5 for an upvote which can be spent on upvoting feature requests.
-            </p>
-        </article>
-        <section class="col-sm-12 col-lg-6 icon">
-            <i class="fas fa-question"></i>
-        </section>
-        <section class="col-sm-12 col-lg-6 icon">
-            <i class="fas fa-cogs"></i>
-        </section>
-        <article class="col-sm-12 col-lg-6">
-            <h3>Latest Issues</h1>
-            <section class="recent-issues">
-                {% for issue in issues|slice:"6" %}
-                <section class="issue">
-                    {% if issue.issue_type == "BG" %}
-                        <section class="issue-icon">
-                            <i class="fas fa-bug" title="Bug"></i>
-                        </section>
-                    {% else %}
-                        <section class="issue-icon">
-                            <i class="far fa-lightbulb" title="Feature"></i>
-                        </section>
-                    {% endif %}
-                    {% if issue.title|length > 11 %}
-                    <a href="{% url 'issue_details' issue.id %}" class="small-display"><p>{{ issue.title|slice:"11" }}&hellip;</p></a>
-                    {% else %}
-                    <a href="{% url 'issue_details' issue.id %}" class="small-display"><p>{{ issue.title }}</p></a>
-                    {% endif %}
-                    {% if issue.title|length > 32 %}
-                    <a href="{% url 'issue_details' issue.id %}" class="large-display"><p>{{ issue.title|slice:"32" }}&hellip;</p></a>
-                    {% else %}
-                    <a href="{% url 'issue_details' issue.id %}" class="large-display"><p>{{ issue.title }}</p></a>
-                    {% endif %}
-                    <p class="created-date">{{ issue.created|date:"jS F Y" }}</p>
-                </section>
-                {% endfor %}
-            </section>
-        </article>
-    </section>
+
+    <article class="col-sm-12 col-lg-6">
+      <h5>Issues Completed Over The Last 7 Days</h5>
+      <!-- 
+        A bar chart showing off how many issues
+        were completed each day over the past 7 days 
+      -->
+      <canvas id="by_days" width="400" height="250"></canvas>
+    </article>
+    <article class="col-sm-12 col-lg-6">
+      <h5>Issues Completed Over The Last 12 Months</h5>
+      <!-- 
+        A bar chart showing off how many issues were
+        completed each month over the past 12 months
+      -->
+      <canvas id="by_months" width="400" height="250"></canvas>
+    </article>
+
+    <script type="text/javascript">
+      // Construct a bar chart for issues completed each month for 12 months
+      var by_months = document.getElementById('by_months');
+      var chart_months = new Chart(by_months, {
+        type: 'bar',
+        data: {
+          labels: [
+            {% for month in months %}
+            "{{ month|date:'M' }}",
+            {% endfor %}
+          ],
+          datasets: [{
+            label: 'Issues completed',
+            data: {{ issues_last_twelve_months }},
+            backgroundColor: 'rgba(97, 85, 214, .7)',
+            borderColor: 'rgba(97, 85, 214, 1)',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+      // Construct a bar chart for issues completed each day for 7 days
+      var by_days = document.getElementById('by_days');
+      var chart_days = new Chart(by_days, {
+        type: 'bar',
+        data: {
+          labels: [
+            {% for day in days %}
+            "{{ day|date:'D' }}",
+            {% endfor %}
+          ],
+          datasets: [{
+            label: 'Issues completed',
+            data: {{ issues_last_seven_days }},
+            backgroundColor: 'rgba(97, 85, 214, .7)',
+            borderColor: 'rgba(97, 85, 214, 1)',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+      // Construct a pie chart to display all issues grouped by their progress status
+      var by_status = document.getElementById('by_status');
+      var chart_status = new Chart(by_status, {
+        type: 'pie',
+        data: {
+          labels: ["Complete", "In progress", "Incomplete"],
+          datasets: [{
+            data: {{ issues_by_status }},
+            backgroundColor: [
+              'rgba(50, 151, 211, .7)',
+              'rgba(62, 207, 142, .7)',
+              'rgba(245, 190, 88, .7)',
+            ],
+            borderColor: [
+              'rgba(50, 151, 211, 1)',
+              'rgba(62, 207, 142, 1)',
+              'rgba(245, 190, 88, 1)',
+            ],
+            borderWidth: 2
+          }]
+        }
+      });
+    </script>
+  </section>
 </main>
 {% endblock %}

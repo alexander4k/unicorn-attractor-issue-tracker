@@ -1,69 +1,93 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
+<!-- 
+  Base templated for displaying all issues,
+  only bugs and only feature requests 
+  -->
 {% block page.title %}Issues Page{% endblock %}
 
 {% block content %}
 <main class="container content">
-    <section class="row issues">
-        <section class="col-sm-12 heading">
-            {% block page.heading %}
-            {% endblock %}
-        </section>
-        <section class="col-sm-12 buttons">
-            {% if user.is_authenticated and user.profile %}
-                <section class="create-issue-button">
-                    <a href="{% url 'create_issue' %}"><span>Create issue</span></a>
-                </section>
-            {% else %}
-            <section class="register-or-login">
-                <p>
-                    <a href="{% url 'register' %}" class="login-register-link"><span>Register</span></a>
-                    or 
-                    <a href="{% url 'index' %}" class="login-register-link"><span>login</span></a>
-                    to start creating issues
-                </p>
-            </section>
-            {% endif %}
-            {% if issues %}
-                {% block sort_links %}
-                {% endblock %}
-            {% endif %}
-        </section>
-        {% if issues %}
-            {% for issue in issues %}
-                {% block issue %}
-                {% endblock %}
-            {% endfor %}
-        {% else %}
-            <section class="col-sm-12 no-issues-message">
-                <p>No issues have been added yet.</p>
-            </section>
-        {% endif %}
+  <section class="row issues">
+    <section class="col-sm-12 heading">
+      {% block page.heading %}{% endblock %}
+    </section>
+    <section class="col-sm-12 buttons">
+      {% if user.is_authenticated and user.profile %}
+      <!-- 
+        Only allow users that are logged in and have a
+        user profile to create an issue 
+      -->
+      <section class="button-two create-issue-button">
+        <a href="{% url 'create_issue' %}"><span>Create issue</span></a>
+      </section>
+      {% else %}
+      <section class="register-or-login">
+        <p>
+          <a href="{% url 'register' %}" class="login-register-link">
+            <span>Register</span>
+          </a> 
+          or
+          <a href="{% url 'index' %}" class="login-register-link">
+            <span>login</span>
+          </a> 
+          to start creating issues
+        </p>
+      </section>
+      {% endif %}
+      {% if issues %}
+      <!-- Sort links to display if issues exist-->
+        {% block sort_links %}{% endblock %}
+      {% endif %}
     </section>
     {% if issues %}
-        <section class="row pagination-section">
-            <section class="col">
-                  <ul class="pagination">
-                    {% if issues.has_previous %}
-                      <li><a href="?page={{ issues.previous_page_number }}"><i class="fas fa-caret-left"></i></a></li>
-                    {% else %}
-                      <li class="disabled"><i class="fas fa-caret-left"></i></li>
-                    {% endif %}
-                    {% for i in issues.paginator.page_range %}
-                      {% if issues.number == i %}
-                        <li class="active">{{ i }}</li>
-                      {% else %}
-                        <li><a href="?page={{ i }}">{{ i }}</a></li>
-                      {% endif %}
-                    {% endfor %}
-                    {% if issues.has_next %}
-                      <li><a href="?page={{ issues.next_page_number }}"><i class="fas fa-caret-right"></i></a></li>
-                    {% else %}
-                      <li class="disabled"><i class="fas fa-caret-right"></i></li>
-                    {% endif %}
-                  </ul>
-            </section>
-        </section>
+    <!-- If issues exist display all issues--> 
+      {% for issue in issues %}
+        {% block issue %}{% endblock %}
+      {% endfor %}
+    {% else %}
+    <section class="col-sm-12 no-issues-message">
+      <!-- Message if there yet aren't any issues -->
+      <p>No issues have been added yet.</p>
+    </section>
     {% endif %}
+  </section>
+  {% if issues and issues_list|length > 10 %}
+  <!-- 
+    Only display pagination buttons if issues 
+    exist and there are more than 10 of them 
+  -->
+  <section class="row pagination-section">
+    <section class="col">
+      <ul class="pagination">
+        {% if issues.has_previous %}
+        <li>
+          <a href="?page={{ issues.previous_page_number }}">
+            <i class="fas fa-caret-left"></i>
+          </a>
+        </li>
+        {% else %}
+        <li class="disabled"><i class="fas fa-caret-left"></i></li>
+        {% endif %}
+        {% for i in issues.paginator.page_range %}
+          {% if issues.number == i %}
+          <li class="active">{{ i }}</li>
+          {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if issues.has_next %}
+        <li>
+          <a href="?page={{ issues.next_page_number }}">
+            <i class="fas fa-caret-right"></i>
+            </a>
+          </li>
+        {% else %}
+        <li class="disabled"><i class="fas fa-caret-right"></i></li>
+        {% endif %}
+      </ul>
+    </section>
+  </section>
+  {% endif %}
 </main>
 {% endblock %}

@@ -1,32 +1,50 @@
-{% extends 'base.html' %} {% block page.title %}Profile Page{% endblock %} {% block content %}
+{% extends 'base.html' %}
+<!-- User profile page -->
+{% block page.title %}Profile Page{% endblock %}
+
+{% block content %}
 <main class="container content">
-      <section class="row profile">
-            <section class="col-md-6 order-md-2 profile-image">
-                  {% if profile.image %}
-                  <section class="image" style="background-image: url('{{ MEDIA_URL }}{{ profile.image }}')" title="Profile image"></section>
-                  {% else %}
-                  <section class="image" style="background-image: url('{{ MEDIA_URL }}/images/profile_images/default_profile_image.png" title="Profile image"></section>
-                  {% endif %}
-                  <section class="change-image-button">
-                        <a href="{% url 'update_profile_image' %}"><span class="change-button">Change profile image</span></a>
-                  </section>
-            </section>
-            <section class="col-md-6  order-md-1 profile-info">
-                  <article>
-                        <h1>{{ profile.user.username }}</h1>
-                        <hr>
-                        <section class="other-info">
-                              {% if profile.user.email %}
-                                    <p>Email: {{ profile.user.email }}</p>
-                              {% endif %}
-                              <p>Joined on: {{ profile.user.date_joined|date:"jS F Y P" }}</p>
-                              <p>Upvotes owned: <span>{{ profile.upvotes_owned }}</span></p>
-                        </section>
-                  </article>
-                  <section class="purchase-upvotes-button">
-                        <a href="{% url 'begin_purchase' %}"><span class="purchase-button">Purchase upvotes</span></a>
-                  </section>
-            </section>
+  <section class="row profile">
+    <section class="col-md-6 order-md-2 profile-image">
+      {% if profile.image %}
+      <!-- 
+        If user has a profile image then display it
+        otherwise display the default profile image 
+      -->
+      <section 
+        class="image" 
+        style="background-image: url('{{ MEDIA_URL }}{{ profile.image }}')" 
+        title="Profile image"></section>
+      {% else %}
+      <section 
+        class="image" 
+        style="background-image: url('{{ MEDIA_URL }}/images/profile_images/default.png" 
+        title="Profile image"></section>
+      {% endif %}
+      <section class="button-two change-image-button">
+        <a href="{% url 'update_profile_image' %}">
+          <span class="change-button">Change profile image</span>
+        </a>
       </section>
+    </section>
+    <section class="col-md-6  order-md-1 profile-info">
+      <article>
+        <h1>{{ profile.user.username }}</h1>
+        <hr>
+        <section class="other-info">
+          {% if profile.user.email %}
+          <p>Email: {{ profile.user.email }}</p>
+          {% endif %}
+          <p>Joined on: {{ profile.user.date_joined|date:"jS F Y P" }}</p>
+          <p>Upvotes owned: <span>{{ profile.upvotes_owned }}</span></p>
+        </section>
+      </article>
+      <section class="button-two purchase-upvotes-button">
+        <a href="{% url 'begin_purchase' %}">
+          <span class="purchase-button">Purchase upvotes</span>
+        </a>
+      </section>
+    </section>
+  </section>
 </main>
 {% endblock %}

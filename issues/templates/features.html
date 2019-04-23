@@ -1,14 +1,23 @@
 {% extends 'issues.html' %}
+<!-- Page to show when displaying all current feature requests -->
 {% block page.heading %}
-    <h1>Features</h1>
-    <hr>
+<h1>Features</h1>
+<hr> 
 {% endblock %}
+
 {% block sort_links %}
+<!-- 
+  Dropdown menu containing links for sorting
+  feature requests by most popular and most commented 
+-->
 <div class="dropdown show">
-  <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="btn dropdown-toggle" href="#" role="button" 
+    id="dropdownMenuLink" data-toggle="dropdown" 
+    aria-haspopup="true" aria-expanded="false">
     <p>Sort by</p><i class="fas fa-sort-down"></i>
   </a>
-  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+  <div class="dropdown-menu dropdown-menu-right" 
+    aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="/issues/features/popular_sort/">Popular</a>
     <a class="dropdown-item" href="/issues/features/comments_sort/">Comments</a>
   </div>
@@ -16,5 +25,6 @@
 {% endblock %}
 
 {% block issue %}
-    {% include 'issue.html' %}
+  <!-- Include code for each issue row -->
+  {% include 'issue.html' %}
 {% endblock %}
