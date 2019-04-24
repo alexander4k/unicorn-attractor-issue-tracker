@@ -5,3 +5,6 @@ __pycache__/
 env.py
 htmlcov
 .coverage
+*.png
+static/
+media/

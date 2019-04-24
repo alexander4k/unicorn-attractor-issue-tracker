@@ -11,7 +11,7 @@ class Issue(models.Model):
     )
     STATUS_CHOICES = (
         ("IC", "Incomplete"),
-        ("IP", "Inprogress"),
+        ("IP", "In-progress"),
         ("CT", "Complete"),
     )
     title = models.CharField(max_length=254, default="")

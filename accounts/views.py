@@ -36,6 +36,7 @@ def index(request):
     # If there are less than 6 issues, the rest of the rows are displayed as
     # empty so get the number of empty rows to display
     number_features_to_six = 6 - len(most_popular_features)
+    print(number_features_to_six)
     number_bugs_to_six = 6 - len(most_popular_bugs)
     number_recent_to_six = 6 - len(recent_issues)
     number_oldest_to_six = 6 - len(oldest_issues)
@@ -57,7 +58,13 @@ def index(request):
         completed__month=today.month,
         completed__day=today.day
         ).count()
-    issues_by_status = misc.get_count_of_issues_by_status()
+    issues_by_status_counts = misc.get_count_of_issues_by_status()
+    
+    issues_by_status = []
+    for count in issues_by_status_counts:
+        if count > 0:
+            issues_by_status.append(count)
+            
 
     return render(request, 'index.html', 
                 {
@@ -72,10 +79,14 @@ def index(request):
                     "most_popular_bugs":most_popular_bugs,
                     "most_popular_features":most_popular_features,
                     "oldest_issues":oldest_issues,
-                    "number_features_to_six": range(number_features_to_six),
-                    "number_bugs_to_six": range(number_bugs_to_six),
-                    "number_recent_to_six": range(number_recent_to_six),
-                    "number_oldest_to_six": range(number_oldest_to_six),
+                    "number_features_to_six": number_features_to_six,
+                    "number_bugs_to_six": number_bugs_to_six,
+                    "number_recent_to_six": number_recent_to_six,
+                    "number_oldest_to_six": number_oldest_to_six,
+                    "range_features_to_six": range(number_features_to_six),
+                    "range_bugs_to_six": range(number_bugs_to_six),
+                    "range_recent_to_six": range(number_recent_to_six),
+                    "range_oldest_to_six": range(number_oldest_to_six),
                     "issues_today": issues_today,
                     "today":today,
                 })

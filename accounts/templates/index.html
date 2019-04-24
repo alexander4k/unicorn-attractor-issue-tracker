@@ -112,10 +112,16 @@
           completed over time and summaries of current issues.
         </p>
     </article>
+    {% if issues_by_status %}
     <section class="col-sm-12 col-lg-6 order-lg-1">
       <!-- Pie chart of all current issues grouped by status -->
       <canvas id="by_status" width="400" height="250"></canvas>
     </section>
+    {% else %}
+    <section class="col-sm-12 col-lg-6 icon">
+      <i class="fas fa-cogs"></i>
+    </section>
+    {% endif %}
   </section>
   <hr>
   <section class="row home-tertiary-content">
@@ -131,7 +137,7 @@
         {% endfor %} 
         {% if number_recent_to_six > 0 %}
           <!-- If there less than 6 issues but some exist -->
-          {% for i in number_recent_to_six %}
+          {% for i in range_recent_to_six %}
           <!-- Display an empty issue row in order to not have empty space -->
           <section class="issue">
           </section>
@@ -151,7 +157,7 @@
         {% endfor %}
         {% if number_oldest_to_six > 0 %}
         <!-- If there are less than 6 issues but some exist-->
-          {% for i in number_oldest_to_six %}
+          {% for i in range_oldest_to_six %}
           <!-- Display an empty issue row in order to not have empty space -->
           <section class="issue">
           </section>
@@ -171,7 +177,7 @@
         {% endfor %}
         {% if number_bugs_to_six > 0 %}
         <!-- If there are less than 6 issues but some exist-->
-          {% for i in number_bugs_to_six %}
+          {% for i in range_bugs_to_six %}
           <!-- Display an empty issue row in order to not have empty space -->
           <section class="issue">
           </section>
@@ -189,9 +195,9 @@
         <!-- Show the first 6 most popular feature requests by upvotes -->
           {% include 'issue_row.html' %}
         {% endfor %}
-        {% if number_features_to_six > 0 %}
+        {% if number_features_to_six > 0  %}
         <!-- If there are less than 6 issues but some exist-->
-          {% for i in number_features_to_six %}
+          {% for i in range_features_to_six %}
           <!-- Display an empty issue row in order to not have empty space -->
           <section class="issue">
           </section>
@@ -286,12 +292,13 @@
           }
         }
       });
+      {% if issues_by_status %}
       // Construct a pie chart to display all issues grouped by their progress status
       var by_status = document.getElementById('by_status');
       var chart_status = new Chart(by_status, {
         type: 'pie',
         data: {
-          labels: ["Complete", "In progress", "Incomplete"],
+          labels: ["Complete", "In-progress", "Incomplete"],
           datasets: [{
             data: {{ issues_by_status }},
             backgroundColor: [
@@ -308,6 +315,7 @@
           }]
         }
       });
+      {% endif %}
     </script>
   </section>
 </main>

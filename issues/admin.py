@@ -5,7 +5,7 @@ from .models import Issue, Comment, Upvote
 class IssueAdmin(admin.ModelAdmin):
     list_display=('title','author','status','issue_type', 'created', 'updated','completed', 'total_upvotes', 'total_comments')
     fields = ("title", "description", 'status','issue_type', 'created', 'updated','completed', 'author')
-    readonly_fields=('created','updated', 'completed')
+    readonly_fields=('created','updated')
     
 @admin.register(Upvote)
 class UpvoteAdmin(admin.ModelAdmin):
