@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/alexander4k/unicorn-attractor-issue-tracker.svg?branch=master)](https://travis-ci.org/alexander4k/unicorn-attractor-issue-tracker)
