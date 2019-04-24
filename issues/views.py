@@ -55,6 +55,7 @@ def create_issue(request):
         # Only allow a user with a profile to create an issue
         response = render(request, '403.html')
         response.status_code = 403
+        return response
         
     if request.method == 'POST':
         form = IssueForm(request.POST)
@@ -68,7 +69,7 @@ def create_issue(request):
             )
             return redirect('issue_details', id=new_issue.id)
         else:
-            messages.error(request, "Failed to create issue, try again")
+            return redirect("create_issue")
     else:
         form = IssueForm()
     return render(request, "create_issue.html", {'form': form})
@@ -124,7 +125,9 @@ def issue_details(request, id):
             issue.save()
             return redirect("issue_details", id)
         else:
-            messages.error(request, "Failed to add comment, try again")
+            response = render(request, '500.html')
+            response.status_code = 500
+            return response
     else:         
         comment_form = CommentForm()
         
@@ -142,10 +145,11 @@ def add_upvote(request, id):
     View responsible for adding an upvote to an issue
     Only logged in users that have a profile can upvote an issue
     """
-    if not hasattr(request.user, 'profile') or not request.user.is_authenticated():
+    if not hasattr(request.user, 'profile') or request.user.is_anonymous():
         # If user is not logged in or has no profile, send to error page
         response = render(request, '403.html')
         response.status_code = 403
+        return response
     else:
         upvotes_remaining = request.user.profile.upvotes_owned 
     
@@ -163,7 +167,7 @@ def add_upvote(request, id):
             return redirect('issue_details', id)
         else:
             request.session['message'] = "You already upvoted this issue"
-    else:
+    elif issue.issue_type == "FR":
         if upvotes_remaining != 0:
             # For feature requests, as long as a user has more than 0 upvotes
             # they can keep upvoting the feature request

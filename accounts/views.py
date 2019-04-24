@@ -15,7 +15,7 @@ def index(request):
     data for statistics and summaries
     """
     login_form = LoginForm()
-    
+
     message = None
     if 'message' in request.session:
         # Load the message to display for successful login, logout or registration

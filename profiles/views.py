@@ -15,6 +15,7 @@ def profile(request):
         raise Http404 
     else:
         profile = request.user.profile 
+
     return render(request, 'profile.html', {'profile': profile})
 
 @login_required

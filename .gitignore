@@ -3,3 +3,5 @@
 .~c9
 __pycache__/
 env.py
+htmlcov
+.coverage
