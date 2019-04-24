@@ -37,13 +37,12 @@ def update_profile_image(request):
                 profile = request.user.profile
                 profile.image = request.FILES["image"]
                 profile.save()
+                return redirect("profile")
             else:
                 profile = request.user.profile
                 profile.image = None
                 profile.save()
-            return redirect("profile")
-        else:
-            messages.error(request, "Failed to update profile image, try again")
+                return redirect("profile")
     else:
         form = UpdateImageForm()
     return render(request, "update_profile_image.html", {"form": form})

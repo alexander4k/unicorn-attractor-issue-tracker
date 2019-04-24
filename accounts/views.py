@@ -36,7 +36,6 @@ def index(request):
     # If there are less than 6 issues, the rest of the rows are displayed as
     # empty so get the number of empty rows to display
     number_features_to_six = 6 - len(most_popular_features)
-    print(number_features_to_six)
     number_bugs_to_six = 6 - len(most_popular_bugs)
     number_recent_to_six = 6 - len(recent_issues)
     number_oldest_to_six = 6 - len(oldest_issues)

@@ -12,10 +12,6 @@ def all_issues(request, sort_type=None):
     """
     View used to display all existing issues
     """
-    response = render(request, '403.html')
-    response.status_code = 403
-    return response
-    
     issues_list = misc.filter_and_sort_issues('.+', sort_type)
     issues = misc.pagination(issues_list, request.GET.get('page', 1))
     return render(request, 'all_issues.html',
