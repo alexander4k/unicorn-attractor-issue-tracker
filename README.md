@@ -411,6 +411,8 @@ Deployed on Heroku - [Issue Tracker](https://unicorn-attractor-issue-tracker-ale
     * `git init` to create a new repository
     * `git add .`
     * `git commit -m "Initial commit"`
+    * Create Procfile in your top directory and in it add 
+    `web: gunicorn issuetracker.wsgi:application`
     * Push to GitHub new repository
     * Create a new Heroku app
     * In Resources tab, provision Heroku Postgres
