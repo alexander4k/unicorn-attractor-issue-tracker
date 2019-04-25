@@ -129,7 +129,9 @@ During development, changes were made to the design and so the final version of 
   * Used for formatting README.md
 
 ## Testing [![Build Status](https://travis-ci.org/alexander4k/unicorn-attractor-issue-tracker.svg?branch=master)](https://travis-ci.org/alexander4k/unicorn-attractor-issue-tracker)
-
+* To log in as superuser:
+    * username - admin
+    * password - 1234567a
 ### Manual Tests
 
 1. **Index:**
