@@ -396,7 +396,7 @@ During development, changes were made to the design and so the final version of 
 
 ## Deployment 
 
-Deployed on Heroku - [Issue Tracker](https://unicorn-attractor-issue-tracker-alexander4k.c9users.io/).
+Deployed on Heroku - [Issue Tracker](https://issue-tracker-u-a.herokuapp.com/).
 
 * To run locally:
     * Clone the repository by copying the clone url
