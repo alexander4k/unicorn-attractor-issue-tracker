@@ -18,7 +18,6 @@ def all_issues(request, sort_type=None):
         {
             "issues": issues,
             "issues_list":issues_list
-            
         })
     
 def bugs(request, sort_type=None):
@@ -31,7 +30,6 @@ def bugs(request, sort_type=None):
         {
             "issues": issues,
             "issues_list":issues_list
-            
         })
     
 def features(request, sort_type=None):
@@ -43,7 +41,6 @@ def features(request, sort_type=None):
     return render(request, 'features.html', 
         {
             "issues": issues, "issues_list":issues_list
-            
         })
     
 @login_required
@@ -134,6 +131,7 @@ def issue_details(request, id):
     return render(request, 'issue_details.html', {
         "issue": issue,
         "comments": comments,
+        "comments_list": comments_list,
         "comment_form": comment_form,
         "upvoting_disabled": upvoting_disabled,
         "message": message,

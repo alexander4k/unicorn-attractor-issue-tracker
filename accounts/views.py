@@ -8,12 +8,15 @@ from dateutil.relativedelta import relativedelta
 from .forms import RegistrationForm, LoginForm
 from issues.models import Issue
 from .utils import misc
+import os
 
 def index(request):
     """
     A view for the homepage, responsible for the login form and 
     data for statistics and summaries
     """
+    
+    print(os.environ.get("DEVELOPMENT"))
     login_form = LoginForm()
 
     message = None

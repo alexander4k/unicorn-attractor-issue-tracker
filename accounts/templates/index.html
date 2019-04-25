@@ -124,6 +124,8 @@
     {% endif %}
   </section>
   <hr>
+  {% if recent_issues or oldest_issues or most_popular_bugs or most_popular_features %}
+  <!-- Display only if there are any issues  -->
   <section class="row home-tertiary-content">
     <!-- Contains summaries of issues by popularity and date -->
     {% if recent_issues %}
@@ -208,6 +210,7 @@
     {% endif %}
   </section>
   <hr>
+  {% endif %}
   <section class="row home-quaternary-content">
     <!-- Contains statistics and graphs regarding current issues -->
     <section class="col-sm-12 col-lg-6">

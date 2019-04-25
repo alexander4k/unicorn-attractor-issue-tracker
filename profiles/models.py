@@ -7,8 +7,8 @@ import os
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='profile_images', blank=True)
-    upvotes_owned = models.IntegerField(default=5)
+    image = models.ImageField(upload_to='profile_images', null=True, blank=True)
+    upvotes_owned = models.IntegerField(default=0)
     
     def __str__(self):
         return 'Profile of %s' % (self.user.username)
