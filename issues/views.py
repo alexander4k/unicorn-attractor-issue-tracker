@@ -14,6 +14,7 @@ def all_issues(request, sort_type=None):
     """
     issues_list = misc.filter_and_sort_issues('.+', sort_type)
     issues = misc.pagination(issues_list, request.GET.get('page', 1))
+
     return render(request, 'all_issues.html',
         {
             "issues": issues,

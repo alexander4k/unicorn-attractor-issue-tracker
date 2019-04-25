@@ -12,13 +12,17 @@ def filter_and_sort_issues(filter_by, sort_type=None):
     'FR' will return all feature requests
     """
     filter_by = filter_by
-    if not sort_type:
-        issues_list = Issue.objects.filter(issue_type__regex=r'^' + str(filter_by) + '$').order_by('-updated')
+    if sort_type == None:
+        issues_list = Issue.objects.filter(issue_type__regex=r'^' + str(filter_by) + '$'
+            ).order_by('-updated')
+
     else:
         if sort_type == 'popular':
-            issues_list = Issue.objects.filter(issue_type__regex=r'^' + str(filter_by) + '$').annotate(number_of_upvotes=Count('upvotes')).order_by('-number_of_upvotes')
+            issues_list = Issue.objects.filter(issue_type__regex=r'^' + str(filter_by) + '$'
+            ).annotate(number_of_upvotes=Count('upvotes')).order_by('-number_of_upvotes')
         elif sort_type == 'comments':
-            issues_list = Issue.objects.filter(issue_type__regex=r'^' + str(filter_by) + '$').annotate(number_of_comments=Count('comments')).order_by('-number_of_comments')
+            issues_list = Issue.objects.filter(issue_type__regex=r'^' + str(filter_by) + '$'
+            ).annotate(number_of_comments=Count('comments')).order_by('-number_of_comments')
     return issues_list
     
 def pagination(item_list, page):
@@ -31,4 +35,5 @@ def pagination(item_list, page):
         issues = paginator.page(current_page)
     except InvalidPage:
         issues = paginator.page(1)
+    
     return issues

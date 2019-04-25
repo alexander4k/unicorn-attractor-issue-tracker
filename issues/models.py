@@ -20,7 +20,7 @@ class Issue(models.Model):
     status = models.CharField(max_length=2, choices=STATUS_CHOICES, default="IC")
     issue_type = models.CharField(max_length=2, choices=TYPE_CHOICES, default="BG")
     created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(blank=True, null=True)
+    updated = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     completed = models.DateTimeField(blank=True, null=True)
         
     def __str__(self):

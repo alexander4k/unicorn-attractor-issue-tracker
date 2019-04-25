@@ -15,8 +15,6 @@ def index(request):
     A view for the homepage, responsible for the login form and 
     data for statistics and summaries
     """
-    
-    print(os.environ.get("DEVELOPMENT"))
     login_form = LoginForm()
 
     message = None
