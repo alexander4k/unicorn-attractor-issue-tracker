@@ -74,7 +74,7 @@ website, built using the [Bootstrap 4.3.1](https://getbootstrap.com/) framework.
 * When the purchase is complete, the user is presented with their new total amount of owned upvotes and
   a button to take them to the all issues page.
 
-Mockups in a pdf format and user stories can be found here [Mockups](static/ux)
+Mockups in a pdf format and user stories can be found here [Mockups](ux)
 
 During development, changes were made to the design and so the final version of the project differs somewhat from the mockups. 
 
